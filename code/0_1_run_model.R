@@ -22,18 +22,36 @@ run_model <- function(disease = NULL,
   cycle1 <- cycle1_len*step_size_num #seq(10*step_size_num, 14*step_size_num, step_size_num)
   cycle2 <- cycle2_len*step_size_num
   
-  if(data_type == "cases" & model_type == "stl"){
+  if(data_type == "cases" & disease == "flu" & model_type == "stl"){
     cycle1 %>% 
       map(~ts(log(tmp$X2), frequency = .)) %>% 
       map(stl, s.window = "periodic") -> output
   }
   
-  if(data_type == "cases" & model_type == "mstl"){
+  if(data_type == "cases" & disease == "flu" & model_type == "mstl"){
+    tmp$X2[tmp$X2 == 0] <- 1
+    
     map2(CJ(cycle1, cycle2) %>% pull(cycle1), 
          CJ(cycle1, cycle2) %>% pull(cycle2),
          ~msts(data = log(tmp$X2), 
                seasonal.periods = c(.x, .y))) %>% 
       map(mstl, iterate = 3) -> output
+  }
+  
+  if(data_type == "cases" & disease == "rsv" & model_type == "stl"){
+    cycle1 %>% 
+      map(~ts((tmp$X2), frequency = .)) %>% 
+      map(stl, s.window = "periodic") -> output
+  }
+  
+  if(data_type == "cases" & disease == "rsv" & model_type == "mstl"){
+    
+    map2(CJ(cycle1, cycle2) %>% pull(cycle1), 
+         CJ(cycle1, cycle2) %>% pull(cycle2),
+         ~msts(data = (tmp$X2), 
+               seasonal.periods = c(.x, .y))) %>% 
+      map(mstl, iterate = 3) -> output
+    
   }
   
   if(data_type == "rates" & model_type == "stl"){
