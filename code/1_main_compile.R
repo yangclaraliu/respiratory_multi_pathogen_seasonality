@@ -10,17 +10,17 @@ city_ordered <- c("Yunfu", "Guangzhou", "Wenzhou","Wuhan",
 #   map(~get_LL(disease = "flu", city = .)) %>%
 #   map(arrange, desc(contribution_cycle2)) -> LL_flu
 # 
-# city_ordered %>%
-#   map(~get_LL(disease = "rsv", city = .)) %>%
-#   map(arrange, desc(contribution_cycle2)) -> LL_rsv
+city_ordered %>%
+  map(~get_LL(disease = "rsv", city = .)) %>%
+  map(arrange, desc(contribution_cycle2)) -> LL_rsv
 # 
 # write_rds(LL_flu,
 #           paste0("results/LL_flu_v3.rds"))
-# write_rds(LL_rsv,
-#           paste0("results/LL_rsv_v3.rds"))
+write_rds(LL_rsv,
+          paste0("results/LL_rsv_v4.rds"))
 
 LL_flu <- read_rds(paste0("results/LL_flu_v3.rds"))
-LL_rsv <- read_rds(paste0("results/LL_rsv_v3.rds"))
+LL_rsv <- read_rds(paste0("results/LL_rsv_v4.rds"))
 
 LL_flu %>% 
   setNames(city_ordered) %>% 

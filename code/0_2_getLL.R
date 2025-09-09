@@ -177,9 +177,10 @@ get_LL <- function(disease = NULL,
   }
   
   if(data_type == "cases" & disease == "rsv"){
+    tmp$X2[tmp$X2==0] <- 1
     
     cycle1 %>% 
-      map(~ts((tmp$X2), frequency = .)) %>% 
+      map(~ts(log(tmp$X2), frequency = .)) %>% 
       map(stl, s.window = "periodic") %>% 
       map(~.$time.series) %>% 
       map(data.table) %>% 
@@ -197,8 +198,8 @@ get_LL <- function(disease = NULL,
         .dt
       }) %>%
       map(mutate,
-          predicted = (seasonal + trend),
-          observed = (seasonal + trend + remainder),
+          predicted = exp(seasonal + trend),
+          observed = exp(seasonal + trend + remainder),
           predicted = if_else(predicted < 0, 0.01, predicted),
           acf1 = acf(remainder, plot = F)$acf[2],
           length_cycle2 = as.numeric(NA),
@@ -244,7 +245,7 @@ get_LL <- function(disease = NULL,
     
     map2(CJ(cycle1, cycle2) %>% pull(cycle1), 
          CJ(cycle1, cycle2) %>% pull(cycle2),
-         ~msts(data = (tmp$X2), 
+         ~msts(data = log(tmp$X2), 
                seasonal.periods = c(.x, .y))) %>% 
       map(mstl, iterate = 3) %>% 
       map(data.table) %>% 
@@ -279,8 +280,8 @@ get_LL <- function(disease = NULL,
     CJ(length_cycle1 = cycle1, length_cycle2 = cycle2) %>% 
       rownames_to_column(var = "combo_index") %>% 
       left_join(output_mstl, by = "combo_index") %>% 
-      mutate(predicted = (Trend + component_cycle1 + component_cycle2),
-             observed = (Data),
+      mutate(predicted = exp(Trend + component_cycle1 + component_cycle2),
+             observed = exp(Data),
              predicted = if_else(predicted < 0, 0.01, predicted)) %>% 
       mutate(ll = dpois(round(observed, 0),
                         predicted,
@@ -519,14 +520,14 @@ draw_LL_comparison <- function(city = NULL,
 # get_LL(disease = "flu", city = "Yunfu") # works
 # get_LL(disease = "flu", city = "Suzhou")
 #  
-# get_LL(disease = "rsv", city = "Xian") # works
-# get_LL(disease = "rsv", city = "Beijing") # works
-# get_LL(disease = "rsv", city = "Guangzhou") # works
-# get_LL(disease = "rsv", city = "Lanzhou")
-# get_LL(disease = "rsv", city = "Wenzhou") # works
-# get_LL(disease = "rsv", city = "Wuhan") # works
-# get_LL(disease = "rsv", city = "Yunfu") # works
-# get_LL(disease = "rsv", city = "Suzhou") # works
+get_LL(disease = "rsv", city = "Xian") # works
+get_LL(disease = "rsv", city = "Beijing") # works
+get_LL(disease = "rsv", city = "Guangzhou") # works
+get_LL(disease = "rsv", city = "Lanzhou")
+get_LL(disease = "rsv", city = "Wenzhou") # works
+get_LL(disease = "rsv", city = "Wuhan") # works
+get_LL(disease = "rsv", city = "Yunfu") # works
+get_LL(disease = "rsv", city = "Suzhou") # works
 
 
 # get_LL(disease = "flu", city = "Xian") -> x
