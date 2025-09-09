@@ -1,0 +1,104 @@
+Beijing:
+  flu:
+    data_type: rates
+    name: Wu-2018-Beijing
+    proc_data_freq: monthly
+    raw_data_freq: weekly
+    start_date: '2007-07-02'
+  rsv:
+    data_type: cases
+    name: Cui-2013-Beijing
+    proc_data_freq: monthly
+    raw_data_freq: monthly
+    start_date: '2007-07-01'
+Guangzhou:
+  flu:
+    data_type: rates
+    name: Yan-2024-Guangzhou
+    proc_data_freq: weekly
+    raw_data_freq: monthly
+    start_date: '2010-10-04'
+  rsv:
+    data_type: cases
+    name: Zou-2016-Guangzhou
+    proc_data_freq: monthly
+    raw_data_freq: monthly
+    start_date: '2008-01-01'
+Lanzhou:
+  flu:
+    data_type: cases
+    name: Liu-2022-Lanzhou
+    proc_data_freq: weekly
+    raw_data_freq: weekly
+    start_date: '2016-01-01'
+  rsv:
+    data_type: cases
+    name: Liang-2015-Lanzhou
+    proc_data_freq: monthly
+    raw_data_freq: monthly
+    start_date: '2010-12-01'
+Suzhou:
+  flu:
+    data_type: rates
+    name: Yu-2019-Suzhou
+    proc_data_freq: monthly
+    raw_data_freq: monthly
+    start_date: '2011-10-01'
+  rsv:
+    data_type: cases
+    name: Lu-2015-Suzhou
+    proc_data_freq: monthly
+    raw_data_freq: monthly
+    start_date: '2010-01-01'
+Wenzhou:
+  flu:
+    data_type: cases
+    name: Zhong-2016-Wenzhou
+    proc_data_freq: monthly
+    raw_data_freq: monthly
+    start_date: '2010-01-01'
+  rsv:
+    data_type: cases
+    name: Jie-2011-Wenzhou
+    proc_data_freq: monthly
+    raw_data_freq: monthly
+    start_date: '2005-01-01'
+Wuhan:
+  flu:
+    data_type: rates
+    name: Liu-2023-Wuhan
+    proc_data_freq: monthly
+    raw_data_freq: monthly
+    start_date: '2018-05-01'
+  rsv:
+    data_type: cases
+    name: Hu-2023-Wuhan
+    proc_data_freq: monthly
+    raw_data_freq: monthly
+    start_date: '2014-01-01'
+Xian:
+  flu:
+    data_type: cases
+    name: Chen-2023-Xian
+    proc_data_freq: weekly
+    raw_data_freq: daily
+    start_date: '2010-01-01'
+  rsv:
+    data_type: cases
+    name: Lei-2016-Xian
+    proc_data_freq: monthly
+    raw_data_freq: monthly
+    start_date: '2009-01-01'
+Yunfu:
+  flu:
+    data_type: cases
+    name: Peng-2016-Yunfu
+    proc_data_freq: monthly
+    raw_data_freq: monthly
+    start_date: '2010-01-01'
+  rsv:
+    data_type: cases
+    name: Qin-2022-Yunfu
+    proc_data_freq: monthly
+    raw_data_freq: monthly
+    start_date: '2015-01-01'
