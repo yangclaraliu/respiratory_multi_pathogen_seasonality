@@ -2,6 +2,9 @@ library(pacman)
 path_root <- "code/"
 source(paste0(path_root, "0_LoadData.R"))
 source(paste0(path_root, "0_1_run_model.R"))
+source(paste0(path_root, "0_2_getLL.R"))
+source(paste0(path_root, "0_3_simulate_outbreaks.R"))
+source(paste0(path_root, "0_4_plot_outbreaks.R"))
 
 city_ordered <- c("Yunfu", "Guangzhou", "Wenzhou","Wuhan", 
                   "Suzhou", "Xian", "Lanzhou", "Beijing")

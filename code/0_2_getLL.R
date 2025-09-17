@@ -520,14 +520,14 @@ draw_LL_comparison <- function(city = NULL,
 # get_LL(disease = "flu", city = "Yunfu") # works
 # get_LL(disease = "flu", city = "Suzhou")
 #  
-get_LL(disease = "rsv", city = "Xian") # works
-get_LL(disease = "rsv", city = "Beijing") # works
-get_LL(disease = "rsv", city = "Guangzhou") # works
-get_LL(disease = "rsv", city = "Lanzhou")
-get_LL(disease = "rsv", city = "Wenzhou") # works
-get_LL(disease = "rsv", city = "Wuhan") # works
-get_LL(disease = "rsv", city = "Yunfu") # works
-get_LL(disease = "rsv", city = "Suzhou") # works
+# get_LL(disease = "rsv", city = "Xian") # works
+# get_LL(disease = "rsv", city = "Beijing") # works
+# get_LL(disease = "rsv", city = "Guangzhou") # works
+# get_LL(disease = "rsv", city = "Lanzhou")
+# get_LL(disease = "rsv", city = "Wenzhou") # works
+# get_LL(disease = "rsv", city = "Wuhan") # works
+# get_LL(disease = "rsv", city = "Yunfu") # works
+# get_LL(disease = "rsv", city = "Suzhou") # works
 
 
 # get_LL(disease = "flu", city = "Xian") -> x

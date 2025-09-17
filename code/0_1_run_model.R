@@ -19,8 +19,8 @@ run_model <- function(disease = NULL,
                              step_size_char == "monthly"~ 1)
   cycle_max <- round(n_steps/2)
   
-  cycle1 <- cycle1_len*step_size_num #seq(10*step_size_num, 14*step_size_num, step_size_num)
-  cycle2 <- cycle2_len*step_size_num
+  cycle1 <- cycle1_len #seq(10*step_size_num, 14*step_size_num, step_size_num)
+  cycle2 <- cycle2_len
   
   if(data_type == "cases" & model_type == "stl"){
     tmp$X2[tmp$X2 == 0] <- 1

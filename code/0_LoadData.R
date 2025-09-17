@@ -4,6 +4,7 @@ library(data.table)
 library(yaml)
 library(magrittr)
 library(cowplot)
+library(qs)
 
 yaml_data <- yaml.load_file("data/metadata.yaml")
 
@@ -18,6 +19,10 @@ fn_flu <- list("Chen-2023-Xian.csv",
                "Yan-2024-Guangzhou.csv",
                "Yu-2019-Suzhou.csv",        
                "Zhong-2016-Wenzhou.csv")
+
+
+city_ordered <- c("Yunfu", "Guangzhou", "Wenzhou","Wuhan", 
+                  "Suzhou", "Xian", "Lanzhou", "Beijing")
 
 fn_rsv <- paste0(dir_rsv, list.files(dir_rsv)) %>% 
   map(list.files, pattern = ".csv")
