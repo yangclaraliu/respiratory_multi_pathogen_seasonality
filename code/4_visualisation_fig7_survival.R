@@ -131,7 +131,7 @@ p <- ggplot(km, aes(time, 1 - estimate, colour = name, group = interaction(name,
     # subtitle = "By t years, Y% simulations have had the next joint outbreak",
     x = "Gap to next joint outbreak (years)",
     y = "Cumulative proportion with next outbreak",
-    colour = "Threshold",
+    colour = "Risk Threshold",
     fill = "Threshold"  # Add this for the legend
   ) +
   theme_bw(base_size = 13) +
