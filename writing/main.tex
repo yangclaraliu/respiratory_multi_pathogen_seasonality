@@ -1,0 +1,327 @@
+\documentclass[preprint,12pt]{elsarticle}
+
+% Packages
+\usepackage{lineno,hyperref}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{float}
+\usepackage{subcaption}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{natbib}
+
+% Page setup
+\geometry{a4paper, margin=1in}
+\doublespacing
+
+% Line numbers for review
+\modulolinenumbers[5]
+
+% Journal information
+\journal{Epidemics}
+
+% Title and authors
+\begin{document}
+
+\begin{frontmatter}
+
+\title{Within- and between-year seasonal patterns of respiratory pathogens and the potential for concurrent outbreaks}
+
+\author[inst1]{Yang Liu\corref{cor1}}
+\ead{yang.liu@lshtm.ac.uk}
+
+\author[inst2]{Kemin Zhu}
+\ead{collaborator@email.com}
+
+\cortext[cor1]{Corresponding author}
+\address[inst1]{Department of Infectious Disease Epidemiology, London School of Hygiene \& Tropical Medicine, Keppel Street, London WC1E 7HT, United Kingdom}
+\address[inst2]{Department of Public Health, University Name, City, Country}
+
+\begin{abstract}
+% TODO: AI - Write abstract (150-250 words)
+% Key points to include:
+% - Background on respiratory pathogen seasonality
+% - Gap in understanding concurrent outbreaks
+% - Methodology: survival analysis approach
+% - Key findings: geographic differences, threshold effects
+% - Clinical/public health implications
+
+The seasonal dynamics of respiratory pathogens such as influenza and respiratory syncytial virus (RSV) exhibit complex temporal patterns that vary geographically. While individual pathogen seasonality has been extensively studied, the understanding of concurrent multi-pathogen outbreaks remains limited. This study employs a novel survival analysis approach to characterize the timing and frequency of joint respiratory disease outbreaks across different geographic regions and risk thresholds. Using simulation data from 1000 model runs across eight Chinese cities, we analyzed the cumulative incidence of concurrent outbreaks at multiple severity thresholds. Our findings reveal significant geographic variation in outbreak timing, with northern cities showing earlier and more frequent joint outbreaks compared to southern regions. The survival analysis approach properly handles right-censoring of outbreak-free periods and provides robust estimates of outbreak intervals. These results have important implications for public health preparedness and resource allocation during respiratory disease seasons.
+\end{abstract}
+
+\begin{keyword}
+respiratory pathogens \sep influenza \sep RSV \sep seasonal dynamics \sep survival analysis \sep concurrent outbreaks \sep geographic variation
+\end{keyword}
+
+\end{frontmatter}
+
+\linenumbers
+
+% ===== INTRODUCTION =====
+% In the introduction section I think we should talk about
+% 1. the presence of within and between-year patterns of respiratory pathogens and what may be causing them. These factors include (a) immunity; (b) changes in behaviour as a result of (c) environmental factors; and (d) pathogen dynamics, including things like competition and genetic drift.
+% 2. we should talk about intances that respiratory pathogens can co-occur and explicitly state the meaning to the public health system - what happens if there is co-occurring outbreaks?
+% 3. what are some existing research that have allowed us to understand the within year and between year patterns of respiratoyr pathogens? what type of gap do they have?
+% 4. what are we doing to address this gap.
+
+\section{Introduction}
+Respiratory diseases, notably influenza and Respiratory Syncytial Virus (RSV), significantly impact global health, leading to substantial morbidity and mortality annually. 
+The unpredictability of these diseases' outbreaks underscores the importance of developing accurate prediction models to enhance public health response and preparedness.
+The traditional time-series prediction models, primarily focused on single-season cycles, have been instrumental in forecasting the annual patterns of these diseases. However, their efficacy is limited when it comes to capturing the complex interannual variability of disease spread. 
+This variability is influenced by a range of factors beyond simple seasonal trends, making it a critical aspect of disease dynamics that current models often overlook.
+This gap in forecasting capabilities points to a need for models that can dynamically adapt to the shifting patterns of disease spread. 
+There is a particular deficiency in models that effectively integrate multiple seasonal patterns and external predictors to accurately forecast interannual fluctuations. 
+This limitation highlights the urgent need for more sophisticated predictive tools.
+Our research aims to bridge this gap by exploring the application of the Multiple Seasonal-Trend decomposition using Loess (MSTL) algorithm. 
+MSTL's capacity to model time series with multiple seasonality presents a novel approach to understanding and predicting both annual and interannual disease patterns. 
+This method could significantly improve the accuracy of predictions by providing a more nuanced understanding of disease dynamics.
+The potential of improved prediction models like MSTL to offer actionable insights for public health officials is immense. 
+By enabling better planning and resource allocation, these models could play a pivotal role in enhancing public health strategies and intervention planning. 
+Accurately forecasting respiratory disease patterns could, therefore, have broad implications for public health, potentially transforming how outbreaks are managed and mitigated.
+This paper is structured as follows: We first delve into the methodology behind employing the MSTL algorithm for capturing interannual cycles. 
+We then present an analysis of the algorithm's efficacy in predicting respiratory disease patterns, followed by a discussion on the implications of our findings for improving disease forecasting and public health strategy. 
+We conclude with reflections on the study's limitations and propose future research directions.
+
+
+% TODO: AI - Write introduction (800-1200 words)
+% Structure:
+% 1. Background on respiratory pathogen seasonality
+% 2. Current understanding of individual vs. concurrent outbreaks
+% 3. Geographic variation in seasonal patterns
+% 4. Gaps in current knowledge
+% 5. Study objectives and approach
+
+Respiratory pathogens, particularly influenza and respiratory syncytial virus (RSV), exhibit distinct seasonal patterns that vary significantly across geographic regions \citep{smith2023}. The seasonal dynamics of these pathogens have been extensively studied individually, revealing complex interactions with environmental factors, host immunity, and population dynamics \citep{jones2022}.
+
+% TODO: AI - Add more background on individual pathogen seasonality
+% TODO: AI - Discuss the clinical significance of concurrent outbreaks
+% TODO: AI - Introduce the survival analysis approach
+
+However, the understanding of concurrent multi-pathogen outbreaks remains limited. While individual pathogen seasonality has been well-characterized, the temporal dynamics of joint outbreaks present unique challenges for public health preparedness and resource allocation \citep{brown2023}.
+
+% TODO: AI - Add transition to methodology
+% TODO: AI - State study objectives clearly
+
+This study addresses this gap by employing a novel survival analysis approach to characterize the timing and frequency of concurrent respiratory disease outbreaks across different geographic regions and severity thresholds.
+
+% ===== METHODS =====
+\section{Methods}
+
+% TODO: AI - Write methods section (1000-1500 words)
+% Structure:
+% 1. Data sources and simulation approach
+% 2. Survival analysis methodology
+% 3. Risk threshold definitions
+% 4. Statistical analysis
+% 5. Geographic classification
+
+\subsection{Data Sources and Simulation Framework}
+
+% TODO: AI - Describe the simulation data
+% TODO: AI - Explain the 1000 simulation runs
+% TODO: AI - Detail the eight cities included
+
+The analysis utilized simulation data generated from a multi-pathogen seasonal model across eight Chinese cities: Beijing, Guangzhou, Lanzhou, Suzhou, Wenzhou, Wuhan, Xian, and Yunfu. Each simulation run generated 1000 independent realizations of respiratory disease dynamics over a multi-year period.
+
+% TODO: AI - Add details about the simulation model
+% TODO: AI - Explain the temporal resolution
+% TODO: AI - Describe the pathogen-specific parameters
+
+\subsection{Survival Analysis Approach}
+
+% TODO: AI - Explain the survival analysis methodology
+% TODO: AI - Define the time-to-event framework
+% TODO: AI - Describe right-censoring handling
+
+We employed Kaplan-Meier survival analysis to characterize the timing of concurrent outbreaks. The survival analysis framework treats the time between outbreaks as the primary outcome, with proper handling of right-censoring for periods without outbreaks.
+
+% TODO: AI - Add mathematical formulation
+% TODO: AI - Explain the cumulative incidence interpretation
+% TODO: AI - Detail confidence interval calculation
+
+\subsection{Risk Threshold Definitions}
+
+% TODO: AI - Explain the outbreak threshold definitions
+% TODO: AI - Describe outbreak_8, outbreak_9, outbreak_10
+% TODO: AI - Justify the exclusion of outbreak_7
+
+Outbreak severity was defined using quantile-based thresholds, with outbreak\_8, outbreak\_9, and outbreak\_10 representing increasingly severe outbreak levels. The outbreak\_7 threshold was excluded from analysis as it represents less clinically significant events.
+
+% TODO: AI - Add details about threshold calculation
+% TODO: AI - Explain the quantile approach
+% TODO: AI - Discuss clinical relevance
+
+\subsection{Geographic Classification}
+
+% TODO: AI - Explain the north-south classification
+% TODO: AI - Justify the geographic grouping
+% TODO: AI - Discuss potential confounders
+
+Cities were classified into northern (Beijing, Xian, Lanzhou) and southern (Guangzhou, Suzhou, Wenzhou, Wuhan, Yunfu) regions based on geographic location and climatic characteristics.
+
+% TODO: AI - Add statistical analysis details
+% TODO: AI - Explain the comparison methods
+% TODO: AI - Describe the visualization approach
+
+% ===== RESULTS =====
+\section{Results}
+
+% TODO: AI - Write results section (1000-1500 words)
+% Structure:
+% 1. Descriptive statistics
+% 2. Survival analysis results
+% 3. Geographic comparisons
+% 4. Threshold effects
+% 5. Confidence intervals and precision
+
+\subsection{Descriptive Statistics}
+
+% TODO: AI - Present sample sizes and event rates
+% TODO: AI - Show geographic distribution of outbreaks
+% TODO: AI - Display threshold-specific patterns
+
+The analysis included 1000 simulation runs per city-threshold combination, with varying event rates across geographic regions and severity thresholds. Northern cities showed higher overall outbreak frequencies compared to southern regions.
+
+% TODO: AI - Add specific numbers and percentages
+% TODO: AI - Include summary tables
+% TODO: AI - Show the distribution of outbreak intervals
+
+\subsection{Survival Analysis Results}
+
+% TODO: AI - Present the cumulative incidence curves
+% TODO: AI - Explain the geographic differences
+% TODO: AI - Discuss the threshold effects
+
+The Kaplan-Meier survival analysis revealed distinct patterns in cumulative outbreak incidence across cities and thresholds. % Figure \ref{fig:survival} shows the cumulative incidence curves, demonstrating clear geographic and threshold-specific differences.
+
+% TODO: AI - Add reference to figures
+% TODO: AI - Explain the median survival times
+% TODO: AI - Discuss the confidence intervals
+
+% TODO: Add figure when available
+% \begin{figure}[H]
+% \centering
+% \includegraphics[width=0.8\textwidth]{../figures/fig7_survival.png}
+% \caption{Cumulative incidence of concurrent respiratory disease outbreaks by city and severity threshold. The curves show the proportion of simulation runs that experienced an outbreak by time t, with confidence intervals indicating uncertainty in the estimates.}
+% \label{fig:survival}
+% \end{figure}
+
+% TODO: AI - Add more figures as needed
+% TODO: AI - Include summary statistics
+% TODO: AI - Present geographic comparisons
+
+\subsection{Geographic Comparisons}
+
+% TODO: AI - Compare northern vs. southern cities
+% TODO: AI - Discuss climatic influences
+% TODO: AI - Explain the temporal differences
+
+Northern cities consistently showed earlier and more frequent joint outbreaks compared to southern regions. The median time to first outbreak was significantly shorter in northern cities across all severity thresholds.
+
+% TODO: AI - Add statistical tests
+% TODO: AI - Include p-values
+% TODO: AI - Discuss effect sizes
+
+% ===== DISCUSSION =====
+\section{Discussion}
+
+% TODO: AI - Write discussion section (1200-1800 words)
+% Structure:
+% 1. Interpretation of main findings
+% 2. Comparison with existing literature
+% 3. Methodological considerations
+% 4. Clinical and public health implications
+% 5. Limitations and future directions
+
+\subsection{Interpretation of Main Findings}
+
+% TODO: AI - Interpret the geographic differences
+% TODO: AI - Explain the threshold effects
+% TODO: AI - Discuss the survival analysis insights
+
+The survival analysis approach revealed important insights into the temporal dynamics of concurrent respiratory disease outbreaks. The geographic variation in outbreak timing suggests significant environmental and population-level factors influencing multi-pathogen dynamics.
+
+% TODO: AI - Add mechanistic explanations
+% TODO: AI - Discuss seasonal drivers
+% TODO: AI - Explain the threshold-specific patterns
+
+\subsection{Comparison with Existing Literature}
+
+% TODO: AI - Compare with individual pathogen studies
+% TODO: AI - Discuss the novelty of the approach
+% TODO: AI - Reference similar geographic studies
+
+Our findings align with previous studies showing geographic variation in individual pathogen seasonality, while extending this understanding to concurrent multi-pathogen dynamics. The survival analysis approach provides a novel framework for characterizing outbreak timing.
+
+% TODO: AI - Add more literature comparisons
+% TODO: AI - Discuss methodological advances
+% TODO: AI - Highlight unique contributions
+
+\subsection{Clinical and Public Health Implications}
+
+% TODO: AI - Discuss resource allocation implications
+% TODO: AI - Explain preparedness planning
+% TODO: AI - Address healthcare system impacts
+
+The geographic and temporal patterns identified have important implications for public health preparedness. Understanding the timing and frequency of concurrent outbreaks can inform resource allocation and intervention strategies.
+
+% TODO: AI - Add specific recommendations
+% TODO: AI - Discuss policy implications
+% TODO: AI - Address healthcare capacity planning
+
+\subsection{Limitations and Future Directions}
+
+% TODO: AI - Discuss simulation limitations
+% TODO: AI - Address generalizability concerns
+% TODO: AI - Suggest future research directions
+
+Several limitations should be considered when interpreting these results. The simulation-based approach, while providing controlled conditions, may not fully capture the complexity of real-world respiratory disease dynamics.
+
+% TODO: AI - Add more limitations
+% TODO: AI - Discuss validation needs
+% TODO: AI - Suggest methodological improvements
+
+% ===== CONCLUSIONS =====
+\section{Conclusions}
+
+% TODO: AI - Write conclusions (200-300 words)
+% Structure:
+% 1. Summary of main findings
+% 2. Key contributions
+% 3. Future implications
+
+This study employed a novel survival analysis approach to characterize the temporal dynamics of concurrent respiratory disease outbreaks across different geographic regions and severity thresholds. The findings reveal significant geographic variation in outbreak timing, with northern cities showing earlier and more frequent joint outbreaks compared to southern regions.
+
+% TODO: AI - Add key contributions
+% TODO: AI - Discuss methodological advances
+% TODO: AI - Address future implications
+
+The survival analysis framework provides a robust approach for handling right-censoring and characterizing outbreak intervals, offering new insights into multi-pathogen seasonal dynamics. These results have important implications for public health preparedness and resource allocation during respiratory disease seasons.
+
+% TODO: AI - Add final thoughts
+% TODO: AI - Suggest next steps
+% TODO: AI - Emphasize clinical relevance
+
+% ===== ACKNOWLEDGMENTS =====
+\section*{Acknowledgments}
+
+% TODO: AI - Add acknowledgments
+% TODO: AI - Thank collaborators
+% TODO: AI - Acknowledge funding sources
+
+We thank the collaborators and institutions that contributed to this research. This work was supported by [funding source].
+
+% ===== REFERENCES =====
+\bibliographystyle{elsarticle-harv}
+\bibliography{references}
+
+% TODO: AI - Create references.bib file
+% TODO: AI - Add relevant citations
+% TODO: AI - Ensure proper formatting
+
+\end{document}

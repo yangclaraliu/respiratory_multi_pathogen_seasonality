@@ -129,34 +129,34 @@ ggsave("figures/figure5.png", p_save,
 
 
 
-# p_tab_1 %>% 
-#   pivot_longer(starts_with("outbreak_")) %>% 
-#   group_by(name, path, grid, city) %>% 
-#   summarise(
-#     year_range = max(year) - min(year),
-#     outbreak_years = list(year[value == 1]),
-#     n_outbreaks = sum(value == 1),
-#     .groups = "drop"
-#   ) %>% 
-#   rowwise() %>% 
-#   mutate(
-#     diff_mean = case_when(
-#       n_outbreaks == 0 ~ year_range,
-#       n_outbreaks == 1 ~ year_range,
-#       n_outbreaks > 1 ~ {
-#         outbreak_years_sorted <- sort(unlist(outbreak_years))
-#         intervals <- diff(outbreak_years_sorted)
-#         mean(intervals)
-#       }
-#     )
-#   ) -> p_tab_3
-# 
-# 
-# p_tab_3 %>% 
-#   dplyr::filter( name != "outbreak_7") %>% 
-#   mutate(outbreak_cat = if_else(n_outbreaks %in% c(0,1), "No interval calculated", "Outbreak intervals"),
-#          mean_log = log(diff_mean)) %>% 
-#   ggplot(., aes(x = diff_mean, color = outbreak_cat, fill = outbreak_cat)) +
-#   geom_histogram() +
-#   facet_wrap(~ city + name, scales = "free",ncol=3) +
-#   scale_y_log10()
+p_tab_1 %>%
+  pivot_longer(starts_with("outbreak_")) %>%
+  group_by(name, path, grid, city) %>%
+  summarise(
+    year_range = max(year) - min(year),
+    outbreak_years = list(year[value == 1]),
+    n_outbreaks = sum(value == 1),
+    .groups = "drop"
+  ) %>%
+  rowwise() %>%
+  mutate(
+    diff_mean = case_when(
+      n_outbreaks == 0 ~ year_range,
+      n_outbreaks == 1 ~ year_range,
+      n_outbreaks > 1 ~ {
+        outbreak_years_sorted <- sort(unlist(outbreak_years))
+        intervals <- diff(outbreak_years_sorted)
+        mean(intervals)
+      }
+    )
+  ) -> p_tab_3
+
+
+p_tab_3 %>%
+  dplyr::filter( name != "outbreak_7") %>%
+  mutate(outbreak_cat = if_else(n_outbreaks %in% c(0,1), "No interval calculated", "Outbreak intervals"),
+         mean_log = log(diff_mean)) %>%
+  ggplot(., aes(x = diff_mean, color = outbreak_cat, fill = outbreak_cat)) +
+  geom_histogram() +
+  facet_wrap(~ city + name, scales = "free",ncol=3) +
+  scale_y_log10()
