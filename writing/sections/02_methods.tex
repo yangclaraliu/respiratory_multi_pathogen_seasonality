@@ -1,0 +1,51 @@
+% ===== METHODS =====
+\section{Methods}
+\subsection{Data Sources}
+% @kemin-zhu please populate this section
+% please make sure you mention the north and south categorisation over here
+% in here, please mention that all data was log-transformed before modelling, and mention what we did for 0 values
+
+\subsection{Identifying within- and between-year cycles}
+We used a smoothing-based algorithm to derive the within- and between-year cycles in the disease burden of seasonal influenza and RSV. 
+The foundation of this algorithm is LOESS (Locally Estimated Scatterplot Smoothing). 
+Seasonal-Trend decomposition using LOESS (STL) is commonly used to derive within-year cycles in time-series data, assuming single internal cycles. 
+The smoothing-based approach is numerically more flexible compared to other approaches that require researchers to make assumptions about expected mathematical forms (e.g. cosine models or cubic spline-based models) \cite{madaniyazi2022assessing}.  
+
+We further used MSTL (Multiple Seasonal-Trend decomposition using LOESS), which allows for more than one internal cycle. 
+With MSTL, the original time-series were decomposed into four components: within-year patterns, between-year patterns, long-term trends, and residuals.
+We assumed the within-year cycle lengths to be between 10 and 14 months and between-year cycle lengths to be between 18 and 36 months. 
+The upper limit of the between-year cycle lengths was further constrained by the total lengths of the series. 
+For time series that do not include at least two full cycles of a given period length, MSTL does not test that between-year cycle length, as this is a requirement of the MSTL algorithm. 
+Model selection was performed using Akaike Information Criterion (AIC). 
+The optimal model for each city-pathogen combination was defined as having the minimum AIC value. 
+Following standard practice, we considered models with $\Delta$AIC $< 10$ (where $\Delta$AIC $= $ AIC$_i$ $-$ AIC$_{\text{min}}$) as having comparable empirical support. 
+The optimal models and their comparable models were all included in further analysis (i.e. forward simulation and joint outbreak identification).
+The lowest AIC estimates achievable using a single-cycle model were compared against the lowest AIC estimates achievable using multi-cycle models.
+If the latter is lower, then we conclude that between-year patterns play a role in predicting the burden in the context of the city-pathogen combination.
+Bayesian Information Criterion (BIC) was also examined as a sensitivity analysis.
+
+\subsection{Forward simulations of outbreaks and joint outbreak identification}
+In order to assess the implication of within- and between-year patterns on future disease burden, we performed forward simulations based on observed disease burden history and the optimal models derived using the methods above.
+These forward simulations were performed for long timeframes to ensure that within- and between-year patterns estimated using different time-series may be overlaid for a given city.
+Within- and between-year patterns were simply repeated in these forward simulations.
+Trend and residual components of the optimal models were fitted to an Auto-Regressive Integrated Moving Average (ARIMA) model. 
+This ARIMA model was then used to generate 1000 stochastic forward trajectories of the trend and residual components per model selected.
+Since the ARIMA model was fitted to a seasonally adjusted time series, the mean-reverting properties ensure that long-term forward simulations remain bounded.
+This stochastic simulation framework was developed to characterise the uncertainty around event probabilities, rather than providing forecasts of future disease activities.
+When a given city-pathogen combination has $n$ optimal models, then $1000 \times n$ stochastic forward trajectories were generated. 
+All forward simulations were performed based on their original time scale, as presented in the source literature.
+
+Using the forward simulations of both seasonal influenza and RSV disease burden, we explore the possibility of joint outbreaks across different outbreak thresholds. 
+The measure of seasonal influenza and RSV disease burden relied on different epidemiological measures depending on the city and health systems (e.g. attributable hospital admissions, test positive rates) and therefore cannot be directly compared on their original scale.
+Therefore, we rescaled these measures by decile, leaving the 1st and 10th deciles unbounded.
+Joint outbreaks were defined as when seasonal influenza and RSV disease burden simultaneously exceeded the 70th, 80th, and 90th percentiles of their observed disease burden history.
+A year is considered a joint outbreak year if the joint outbreak threshold has been exceeded at least once in that year.
+
+\subsection{Characterising joint outbreak frequency using survival analysis}
+Inter-joint outbreak intervals were calculated as the time elapsed between successive joint outbreak years.
+Directly counting the intervals between joint outbreaks over-weights short intervals as they have more placement opportunities given the finite forward simulation window.
+It also introduces right-censoring issues when no joint outbreak or only one joint outbreak was observed in the forward simulation window.
+To address these issues, we reframed the interval detection as a time-to-event problem, and estimated the inter-joint outbreak intervals using Kaplan-Meier survival analysis, with left truncation and right-censoring.
+The survival curve was fitted for each city at all three different joint outbreak thresholds defined above.
+With this setup, we can calculate inter-joint outbreak intervals.
+In the context of this study, we used the time by which 50\% of the forward simulation paths ($1000 \times n$ models) are expected to experience their next joint outbreak event as the inter-joint outbreak interval. 
