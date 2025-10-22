@@ -237,7 +237,7 @@ plot_grid(p1 +
 
  ggsave("figures/fig3_v2.jpg", width = 14, height = 8)
 
-get_top <- function(m = 6){
+get_comparable <- function(){
   
   flu_stl_all %>% bind_rows(flu_mstl_all) %>% 
     group_by(city) %>% group_split() %>% 
@@ -251,10 +251,8 @@ get_top <- function(m = 6){
         rank_aic, rank_bic,
         step_size1_standardised,
         step_size2_standardised,
-        city) %>% 
-    map(arrange, distribution_specific_AIC) %>% 
-    map(mutate, rank_sum = rank_aic + rank_bic) %>% 
-    map(head, m) %>% 
+        city, metric_similar) %>% 
+    map(dplyr::filter, metric_similar == TRUE) %>%  # Filter for comparable models only
     bind_rows() %>% 
     mutate(city = factor(city, levels = city_ordered),
            direction = if_else(city %in% c("Beijing", "Xian", "Lanzhou"),
@@ -274,10 +272,8 @@ get_top <- function(m = 6){
         rank_aic, rank_bic,
         step_size1_standardised,
         step_size2_standardised,
-        city) %>% 
-    map(arrange, distribution_specific_AIC) %>% 
-    map(mutate, rank_sum = rank_aic + rank_bic) %>% 
-    map(head, m) %>% 
+        city, metric_similar) %>% 
+    map(dplyr::filter, metric_similar == TRUE) %>%  # Filter for comparable models only
     bind_rows() %>% 
     mutate(city = factor(city, levels = city_ordered),
            direction = if_else(city %in% c("Beijing", "Xian", "Lanzhou"),
@@ -291,29 +287,20 @@ get_top <- function(m = 6){
   return(tmp)
 }
 
-p5_tab_5 <- get_top(m = 5) %>% mutate(top = "Top 5")
-p5_tab_10 <- get_top(m = 10) %>% mutate(top = "Top 10")
+p5_tab_comparable <- get_comparable() %>% mutate(analysis = "Comparable Models")
 
-bind_rows(p5_tab_5, 
-          p5_tab_10) %>% 
-  mutate(top = factor(top, levels = c("Top 5", "Top 10"),
-                      labels = c("Top 5",
-                                 "Top 10"))) -> p5_tab
-
-p5_tab %>% 
-  dplyr::filter(top == "Top 5") %>% 
+p5_tab_comparable %>% 
   ggplot(., aes(x = step_size2_standardised, fill = direction)) +
   geom_density(alpha = 0.5) +
   theme_bw() +
-  labs(x = "Length of between-year cycles\namong top performing models",
+  labs(x = "Length of between-year cycles\namong comparable models (ΔAIC ≤ 10)",
        y = "Density",
        fill = "Geographic category",
        color = "Geographic category") +
-  facet_grid(top~disease) +
+  facet_grid(analysis~disease) +
   scale_fill_manual(values = c("#ffc38b", "#b63679")) +
-  geom_vline(data = p5_tab %>% 
-               group_by(top, disease, direction) %>% 
-               dplyr::filter(top == "Top 5") %>% 
+  geom_vline(data = p5_tab_comparable %>% 
+               group_by(analysis, disease, direction) %>% 
                summarise(md = median(step_size2_standardised, na.rm = T)),
              aes(xintercept = md,
                  color = direction),
@@ -329,6 +316,9 @@ p5_tab %>%
 
 ggsave("figs/fig_s1.jpg")
 
-plot_grid(p_top, p5, nrow = 2)
-ggsave("figures/fig3_v3_update.jpg", width = 14, height = 16)
+plot_grid(p_top, p5, nrow = 2,
+          labels = c("", "(E)"),
+          label_x = 0.02, label_y = 0.98)
+
+ggsave("figures/fig3_v3_update_comparable.jpg", width = 14, height = 16)
        

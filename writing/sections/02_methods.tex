@@ -49,3 +49,6 @@ To address these issues, we reframed the interval detection as a time-to-event p
 The survival curve was fitted for each city at all three different joint outbreak thresholds defined above.
 With this setup, we can calculate inter-joint outbreak intervals.
 In the context of this study, we used the time by which 50\% of the forward simulation paths ($1000 \times n$ models) are expected to experience their next joint outbreak event as the inter-joint outbreak interval. 
+
+\subsection{Software and code availability}
+All aforementioned methods and analyses were implemented in R (v4.2.2) using the following \texttt{package}s: \texttt{forecast}, \texttt{mstl}, and \texttt{survival}. All codes are available on the GitHub repository: \url{https://github.com/yangclaraliu/respiratory_multi_pathogen_seasonality}.

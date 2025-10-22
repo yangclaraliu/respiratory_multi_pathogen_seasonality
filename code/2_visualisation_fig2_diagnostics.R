@@ -19,8 +19,8 @@ ggplot(p_tab %>% dplyr::filter(model == "mstl"), aes(x = step_size1_standardised
              color = "#800080", shape = 18, size = 2, stroke = 2) +
   facet_wrap(~city, scales = "free", nrow = 2) +
   theme_bw() +
-  labs(y = "LogLik",
-       x = "Length of ~Annual cycle",
+  labs(y = "Akaike Information Criterion",
+       x = "Length of ~Within-year cycle",
        title = "Seasonal Influenza") -> p1
 
 LL_rsv %>% 
@@ -46,8 +46,8 @@ ggplot(p_tab %>% dplyr::filter(model == "mstl"),
              color = "#800080", shape = 18, size = 2, stroke = 2) +
   facet_wrap(~city, scales = "free", nrow = 2) +
   theme_bw() +
-  labs(y = "LogLik",
-       x = "Length of ~Annual cycle",
+  labs(y = "Akaike Information Criterion",
+       x = "Length of ~Within-year cycle",
        title = "RSV") -> p2
 
 p_save <- plot_grid(p1, p2, ncol = 1)
