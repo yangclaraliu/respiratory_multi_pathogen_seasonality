@@ -5,6 +5,29 @@
 % please make sure you mention the north and south categorisation over here
 % in here, please mention that all data was log-transformed before modelling, and mention what we did for 0 values
 
+\subsection{Data Sources}
+
+We compiled historical time series of respiratory disease burden for respiratory syncytial virus (RSV) and influenza virus (InfV) across eight Chinese cities: Beijing, Lanzhou, Xi'an, Wuhan, Suzhou, Wenzhou, Guangzhou, and Yunfu.
+
+These cities were selected because (i) both RSV and InfV surveillance data were available at the city or metropolitan level, (ii) the available data spanned at least five years, and (iii) the data had monthly or weekly temporal resolution.
+
+RSV data were predominantly derived from laboratory-confirmed positivity among acute respiratory infection (ARI) or lower respiratory tract infection (LRTI) inpatients, based on immunofluorescence, antigen testing, PCR, or mixed virological methods depending on the city.
+
+InfV data were obtained from either influenza-like illness (ILI) outpatient positivity surveillance, virological testing data, or clinically reported influenza diagnoses, depending on local surveillance protocols.
+
+Because surveillance system design differs across cities, the raw data represent different but epidemiologically comparable measures of pathogen-specific respiratory disease burden.
+
+To enable comparison across cities and pathogens, all time series were normalised into dimensionless intensity indices after log-transformation.
+
+A small constant ($\epsilon = 10^{-6}$) was added to zero values prior to log-transformation to avoid undefined values.
+
+Cities were classified into northern and southern groups following the conventional Qinling–Huaihe geographical division, which separates regions with distinct climatic and respiratory epidemic profiles.
+
+The resulting normalised time series were used as inputs to derive within-year and between-year cycles described below.
+
+
+
+
 \subsection{Identifying within- and between-year cycles}
 We used a smoothing-based algorithm to derive the within- and between-year cycles in the disease burden of seasonal influenza and RSV. 
 The foundation of this algorithm is LOESS (Locally Estimated Scatterplot Smoothing). 
