@@ -135,6 +135,76 @@ p5_tab_comparable %>%
   ) %>% 
   print()
 
+# Two-way summary table (disease x direction) with additional quantiles
+cat("\n=== EXTENDED SUMMARY (DISEASE x DIRECTION) ===\n")
+p5_tab_comparable %>%
+  group_by(disease, direction) %>%
+  summarise(
+    n_models = n(),
+    mean_cycle = mean(step_size2_standardised, na.rm = TRUE),
+    median_cycle = median(step_size2_standardised, na.rm = TRUE),
+    sd_cycle = sd(step_size2_standardised, na.rm = TRUE),
+    q25 = quantile(step_size2_standardised, 0.25, na.rm = TRUE),
+    q75 = quantile(step_size2_standardised, 0.75, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  arrange(disease, direction) %>%
+  print()
+
+# CITY-LEVEL AGGREGATION (to avoid overweighting cities with more models)
+cat("\n=== CITY-LEVEL SUMMARY (DISEASE x DIRECTION) ===\n")
+city_level_summary <- p5_tab_comparable %>%
+  group_by(disease, direction, city) %>%
+  summarise(
+    city_mean_cycle = mean(step_size2_standardised, na.rm = TRUE),
+    city_n_models = n(),
+    .groups = "drop"
+  ) %>%
+  group_by(disease, direction) %>%
+  summarise(
+    n_cities = n(),
+    mean_city_cycle = mean(city_mean_cycle, na.rm = TRUE),
+    sd_city_cycle = sd(city_mean_cycle, na.rm = TRUE),
+    median_city_cycle = median(city_mean_cycle, na.rm = TRUE),
+    q25_city = quantile(city_mean_cycle, 0.25, na.rm = TRUE),
+    q75_city = quantile(city_mean_cycle, 0.75, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  arrange(disease, direction)
+
+print(city_level_summary)
+
+# CITY-LEVEL STATISTICAL TESTS
+cat("\n=== CITY-LEVEL STATISTICAL TESTS ===\n")
+
+# Prepare city-level data for testing
+city_test_data <- p5_tab_comparable %>%
+  group_by(disease, direction, city) %>%
+  summarise(city_mean_cycle = mean(step_size2_standardised, na.rm = TRUE), .groups = "drop")
+
+# Overall North vs South (city-level)
+overall_city_test <- t.test(city_mean_cycle ~ direction, data = city_test_data)
+cat("Overall city-level comparison (North vs South):\n")
+print(overall_city_test)
+
+# By pathogen (city-level)
+for(this_disease in c("Influenza", "RSV")){
+  disease_city_data <- city_test_data %>% filter(disease == this_disease)
+  if(nrow(disease_city_data) > 0 && length(unique(disease_city_data$direction)) == 2){
+    cat("\n", this_disease, " city-level comparison (North vs South):\n", sep = "")
+    print(t.test(city_mean_cycle ~ direction, data = disease_city_data))
+  }
+}
+
+# Within-region comparisons (city-level)
+for(this_dir in c("North", "South")){
+  dir_city_data <- city_test_data %>% filter(direction == this_dir)
+  if(nrow(dir_city_data) > 0 && length(unique(dir_city_data$disease)) == 2){
+    cat("\n", this_dir, " city-level comparison (Influenza vs RSV):\n", sep = "")
+    print(t.test(city_mean_cycle ~ disease, data = dir_city_data))
+  }
+}
+
 # Overall statistics (across all diseases and directions)
 cat("\n=== OVERALL STATISTICS ===\n")
 p5_tab_comparable %>% 
@@ -204,6 +274,36 @@ if(nrow(rsv_data) > 0) {
                ifelse(abs(rsv_cohens_d) < 0.5, "small", 
                       ifelse(abs(rsv_cohens_d) < 0.8, "medium", "large"))), "\n")
   }
+}
+
+# Within-region comparisons: Influenza vs RSV for each direction
+cat("\n=== WITHIN-REGION COMPARISONS (PATHOGENS) ===\n")
+
+for(this_dir in c("North", "South")){
+  dir_data <- p5_tab_comparable %>% filter(direction == this_dir)
+  if(nrow(dir_data) > 0){
+    cat("\n", this_dir, "- Influenza vs RSV:\n", sep = "")
+    # Ensure disease is a factor with both levels present
+    if(length(unique(dir_data$disease)) == 2){
+      print(t.test(step_size2_standardised ~ disease, data = dir_data))
+    } else {
+      cat("Insufficient disease levels in", this_dir, "for comparison.\n")
+    }
+  }
+}
+
+# Two-way ANOVA (disease x direction) with interaction
+cat("\n=== TWO-WAY ANOVA (DISEASE x DIRECTION) ===\n")
+anova_data <- p5_tab_comparable %>%
+  mutate(
+    disease = factor(disease, levels = c("Influenza", "RSV")),
+    direction = factor(direction, levels = c("North", "South"))
+  ) %>%
+  drop_na(step_size2_standardised)
+
+if(nrow(anova_data) > 0){
+  two_way <- aov(step_size2_standardised ~ disease * direction, data = anova_data)
+  print(summary(two_way))
 }
 
 # Variance comparison tests
