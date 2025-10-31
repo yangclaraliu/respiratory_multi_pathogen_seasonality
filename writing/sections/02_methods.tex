@@ -5,36 +5,32 @@
 % please make sure you mention the north and south categorisation over here
 % in here, please mention that all data was log-transformed before modelling, and mention what we did for 0 values
 
-\subsection{Data Sources}
+% how did you identify literature for RSV and for influenza? Please refer to the full search term in the supplemental material.
+ 
+% as a result of that what are the cities you selected? Where are they? What are their characteristics?
+
+% what indicators did you extract? Refer to your supplementary table.
 
 We compiled historical time series of respiratory disease burden for respiratory syncytial virus (RSV) and influenza virus (influenza) across eight Chinese cities: Beijing, Lanzhou, Xi'an, Wuhan, Suzhou, Wenzhou, Guangzhou, and Yunfu.
-
 These cities were selected because (i) both RSV and influenza surveillance data were available at the city or metropolitan level, (ii) the available data spanned at least five years, and (iii) the data had monthly or weekly temporal resolution.
-
 RSV data were predominantly derived from laboratory-confirmed positivity among acute or lower respiratory tract infection inpatients, using immunofluorescence, antigen testing, PCR, or mixed virological methods depending on the city.
-
 Influenza data were obtained from influenza-like illness (ILI) outpatient positivity surveillance, virological testing data, or clinically reported influenza diagnoses, depending on local surveillance protocols.
-
 Because surveillance systems differ across cities, the raw data represent different but epidemiologically comparable measures of pathogen-specific respiratory disease burden.
-
-To enable comparison across cities and pathogens, all time series were normalised into dimensionless intensity indices after log-transformation.
-
-A small constant ($\epsilon = 10^{-6}$) was added to zero values prior to log-transformation to avoid undefined values.
-
 Cities were classified into northern and southern groups following the conventional Qinling–Huaihe geographical division, which separates regions with distinct climatic and respiratory epidemic profiles.
+The selection and compilation of influenza and RSV surveillance data are summarised in Figure %~\ref{fig:data_selection}.
 
-The selection and compilation of influenza and RSV surveillance data are summarised in Figure~\ref{fig:data_selection}.
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.8\textwidth]{figures/Flu-RSV.png}
-  \caption{Selection and compilation of influenza and RSV data across the eight study cities. (a) Data selection workflow; (b) Geographic coverage and data representation.}
-  \label{fig:data_selection}
-\end{figure}
-
+% \begin{figure}[htbp]
+%   \centering
+%   \includegraphics[width=0.8\textwidth]{figures/Flu-RSV.png}
+%   \caption{Selection and compilation of influenza and RSV data across the eight study cities. (a) Data selection workflow; (b) Geographic coverage and data representation.}
+%   \label{fig:data_selection}
+% \end{figure}
 
 
 \subsection{Identifying within- and between-year cycles}
+% To enable comparison across cities and pathogens, all time series were normalised into dimensionless intensity indices after log-transformation.
+% A small constant ($\epsilon = 10^{-6}$) was added to zero values prior to log-transformation to avoid undefined values.
+
 We used a smoothing-based algorithm to derive the within- and between-year cycles in the disease burden of seasonal influenza and RSV. 
 The foundation of this algorithm is LOESS (Locally Estimated Scatterplot Smoothing). 
 Seasonal-Trend decomposition using LOESS (STL) is commonly used to derive within-year cycles in time-series data, assuming single internal cycles. 
