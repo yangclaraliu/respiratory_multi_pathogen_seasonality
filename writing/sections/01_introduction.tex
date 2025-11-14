@@ -6,6 +6,17 @@
 % 4. what are we doing to address this gap.
 
 \section{Introduction}
+% background on respiratory pathogens: seasonal influenza and RSV
+% background on seasonality, within-year and between-year patterns (1) seasonality may differ by geographic locations
+% why may between-year patterns exist for respiratory pathogens?(1) why is what we are doing novel?
+% introducing: how often are we likely going to have a concurrent peak of influenza and RSV? (1) why is it important?
+
+% literature search: 
+% (1) concurrent outbreak (population level of seasonal infectious diseases); you can cite a few news article
+% (2) literature on RSV and seasonal influenza background epidemiology
+% (3) methods for studying seasonality
+% avoid talking about forecasting - understanding the epidemiology and use that for concurrent outbreak preparedness
+
 Respiratory diseases, notably influenza and Respiratory Syncytial Virus (RSV), significantly impact global health, leading to substantial morbidity and mortality annually. 
 The unpredictability of these diseases' outbreaks underscores the importance of developing accurate prediction models to enhance public health response and preparedness.
 The traditional time-series prediction models, primarily focused on single-season cycles, have been instrumental in forecasting the annual patterns of these diseases. However, their efficacy is limited when it comes to capturing the complex interannual variability of disease spread. 
@@ -13,12 +24,13 @@ This variability is influenced by a range of factors beyond simple seasonal tren
 This gap in forecasting capabilities points to a need for models that can dynamically adapt to the shifting patterns of disease spread. 
 There is a particular deficiency in models that effectively integrate multiple seasonal patterns and external predictors to accurately forecast interannual fluctuations. 
 This limitation highlights the urgent need for more sophisticated predictive tools.
+
 Our research aims to bridge this gap by exploring the application of the Multiple Seasonal-Trend decomposition using Loess (MSTL) algorithm. 
 MSTL's capacity to model time series with multiple seasonality presents a novel approach to understanding and predicting both annual and interannual disease patterns. 
-This method could significantly improve the accuracy of predictions by providing a more nuanced understanding of disease dynamics.
-The potential of improved prediction models like MSTL to offer actionable insights for public health officials is immense. 
+% This method could significantly improve the accuracy of predictions by providing a more nuanced understanding of disease dynamics.
+% The potential of improved prediction models like MSTL to offer actionable insights for public health officials is immense. 
 By enabling better planning and resource allocation, these models could play a pivotal role in enhancing public health strategies and intervention planning. 
-Accurately forecasting respiratory disease patterns could, therefore, have broad implications for public health, potentially transforming how outbreaks are managed and mitigated.
+%  Accurately forecasting respiratory disease patterns could, therefore, have broad implications for public health, potentially transforming how outbreaks are managed and mitigated.
 This paper is structured as follows: We first delve into the methodology behind employing the MSTL algorithm for capturing interannual cycles. 
 We then present an analysis of the algorithm's efficacy in predicting respiratory disease patterns, followed by a discussion on the implications of our findings for improving disease forecasting and public health strategy. 
 We conclude with reflections on the study's limitations and propose future research directions.
@@ -68,18 +80,13 @@ By integrating multi–period decomposition with an event–time perspective, th
 % 4. Gaps in current knowledge
 % 5. Study objectives and approach
 
-Respiratory pathogens, particularly influenza and respiratory syncytial virus (RSV), exhibit distinct seasonal patterns that vary significantly across geographic regions \citep{smith2023}. The seasonal dynamics of these pathogens have been extensively studied individually, revealing complex interactions with environmental factors, host immunity, and population dynamics \citep{jones2022}.
 
 % TODO: AI - Add more background on individual pathogen seasonality
 % TODO: AI - Discuss the clinical significance of concurrent outbreaks
 % TODO: AI - Introduce the survival analysis approach
 
-However, the understanding of concurrent multi-pathogen outbreaks remains limited. While individual pathogen seasonality has been well-characterized, the temporal dynamics of joint outbreaks present unique challenges for public health preparedness and resource allocation \citep{brown2023}.
 
 % TODO: AI - Add transition to methodology
 % TODO: AI - State study objectives clearly
-
-This study addresses this gap by employing a novel survival analysis approach to characterize the timing and frequency of concurrent respiratory disease outbreaks across different geographic regions and severity thresholds.
-
 
 

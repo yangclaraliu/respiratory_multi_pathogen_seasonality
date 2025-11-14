@@ -1,0 +1,80 @@
+\documentclass[preprint,12pt]{elsarticle}
+
+% ===== ESSENTIAL PACKAGES =====
+% Font and encoding
+\usepackage[utf8]{inputenc}       % UTF-8 encoding
+\usepackage[T1]{fontenc}          % Better font encoding
+\usepackage{lmodern}              % Modern, scalable fonts
+
+% Layout
+\usepackage[margin=1in]{geometry} % Page margins
+\usepackage{setspace}             % Line spacing
+\onehalfspacing                   % 1.5 spacing (more readable than double)
+
+% Line numbers for review
+\usepackage{lineno}
+\modulolinenumbers[1]
+
+% Math
+\usepackage{amsmath,amssymb,amsfonts}
+
+% Figures and tables
+\usepackage{graphicx}
+\graphicspath{{figures/}}         % Default path for figures
+\usepackage{booktabs}             % Professional tables
+\usepackage{multirow}             % Multi-row cells
+\usepackage{array}                % Enhanced arrays
+\usepackage{float}                % Better float control
+\usepackage{caption}              % Caption customization
+\usepackage{subcaption}           % Subfigures
+
+% Units and numbers
+\usepackage{siunitx}              % Proper formatting for units
+\sisetup{detect-all}              % Auto-detect font settings
+
+% References and citations
+\usepackage{natbib}               % Bibliography management
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}  % Blue hyperlinks
+\usepackage[capitalise,noabbrev]{cleveref} % Smart cross-references
+
+% Journal information
+\journal{Epidemics}
+
+% Title and authors
+\begin{document}
+
+\begin{frontmatter}
+
+\title{Within- and between-year seasonal patterns of respiratory pathogens and the potential for concurrent outbreaks}
+
+\author[inst1]{Yang Liu\corref{cor1}}
+\ead{yang.liu@lshtm.ac.uk}
+
+\author[inst2]{Kemin Zhu}
+\ead{collaborator@email.com}
+
+\cortext[cor1]{Corresponding author}
+\address[inst1]{Department of Infectious Disease Epidemiology, London School of Hygiene \& Tropical Medicine, Keppel Street, London WC1E 7HT, United Kingdom}
+\address[inst2]{Department of Public Health, University Name, City, Country}
+
+\begin{abstract}
+Supplementary materials for the main manuscript.
+\end{abstract}
+
+\begin{keyword}
+respiratory pathogens \sep influenza \sep RSV \sep seasonal dynamics \sep survival analysis \sep concurrent outbreaks \sep geographic variation
+\end{keyword}
+
+\end{frontmatter}
+
+\linenumbers
+
+% ===== SUPPLEMENTAL CONTENT =====
+\input{sections/07_supplemental}
+
+% ===== REFERENCES =====
+\bibliographystyle{elsarticle-harv}
+\bibliography{bib/references}
+
+\end{document}
+

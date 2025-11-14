@@ -45,6 +45,9 @@ This produced standardised cycle-length metrics (\textit{step\_size\_standardise
 
 
 \subsection{Identifying within- and between-year cycles}
+% To enable comparison across cities and pathogens, all time series were normalised into dimensionless intensity indices after log-transformation.
+% A small constant ($\epsilon = 10^{-6}$) was added to zero values prior to log-transformation to avoid undefined values.
+
 We used a smoothing-based algorithm to derive the within- and between-year cycles in the disease burden of seasonal influenza and RSV. 
 The foundation of this algorithm is LOESS (Locally Estimated Scatterplot Smoothing). 
 Seasonal-Trend decomposition using LOESS (STL) is commonly used to derive within-year cycles in time-series data, assuming single internal cycles. 
