@@ -3,3 +3,119 @@
 % search strategy
 % data table: literature and data characteristics and sources
 
+% ===== TABLE OF CONTENTS =====
+\subsection*{Table of Contents}
+\begin{itemize}
+    \item \hyperref[tab:comparable_models]{Table S1: Number of comparable models by city and pathogen} \dotfill \pageref{tab:comparable_models}
+    \item \hyperref[tab:joint_outbreak_probability]{Table S2: Median probability of joint outbreaks by risk threshold} \dotfill \pageref{tab:joint_outbreak_probability}
+    \item \hyperref[tab:survival_median_times]{Table S3: Median time to next joint outbreak by risk threshold} \dotfill \pageref{tab:survival_median_times}
+    \item \hyperref[fig:supplemental_cycle_lengths]{Figure S1: Distribution of between-year cycle lengths} \dotfill \pageref{fig:supplemental_cycle_lengths}
+\end{itemize}
+
+\clearpage
+
+% ===== TABLES SECTION =====
+\subsection{Tables}
+
+\subsubsection{Comparable Models by City and Pathogen}
+\label{subsec:comparable_models}
+
+\begin{table}[htbp]
+\centering
+\caption{Table S1: Number of comparable models ($\Delta$AIC $\leq$ 10) per city and pathogen. This table illustrates the distribution of model availability across the eight study cities, highlighting the variation in the number of comparable models per city.}
+\label{tab:comparable_models}
+\begin{tabular}{lcc}
+\toprule
+\textbf{City} & \textbf{Influenza} & \textbf{RSV} \\
+\midrule
+\multicolumn{3}{l}{\textit{North}} \\
+Beijing & 20 & 39 \\
+Lanzhou & 2 & 4 \\
+Xian & 2 & 3 \\
+\textit{North Total} & \textit{24} & \textit{46} \\
+\midrule
+\multicolumn{3}{l}{\textit{South}} \\
+Wuhan & 20 & 22 \\
+Suzhou & 18 & 3 \\
+Guangzhou & 4 & 11 \\
+Wenzhou & 2 & 2 \\
+Yunfu & 2 & 2 \\
+\textit{South Total} & \textit{46} & \textit{40} \\
+\midrule
+\textbf{Grand Total} & \textbf{70} & \textbf{86} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\clearpage
+
+\subsubsection{Median Probability of Joint Outbreaks by Risk Threshold}
+\label{subsec:joint_outbreak_probability}
+
+\begin{table}[htbp]
+\centering
+\caption{Table S2: Median probability of joint outbreaks by city and risk threshold. Values represent the median proportion of years with concurrent high-risk periods for both Influenza and RSV across 1000 simulation paths. Risk thresholds are defined as joint top 30\%, 20\%, and 10\% percentiles of disease burden.}
+\label{tab:joint_outbreak_probability}
+\begin{tabular}{lccc}
+\toprule
+\textbf{City} & \textbf{Top 30\%} & \textbf{Top 20\%} & \textbf{Top 10\%} \\
+\midrule
+\multicolumn{4}{l}{\textit{North}} \\
+Beijing & 0.200 & 0.100 & 0.000 \\
+Lanzhou & 0.118 & 0.059 & 0.000 \\
+Xian & 0.450 & 0.350 & 0.150 \\
+\midrule
+\multicolumn{4}{l}{\textit{South}} \\
+Wuhan & 0.400 & 0.300 & 0.150 \\
+Suzhou & 0.350 & 0.200 & 0.100 \\
+Guangzhou & 0.188 & 0.125 & 0.062 \\
+Wenzhou & 0.812 & 0.500 & 0.250 \\
+Yunfu & 0.375 & 0.188 & 0.125 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\clearpage
+
+\subsubsection{Median Time to Next Joint Outbreak by Risk Threshold}
+\label{subsec:survival_median_times}
+
+\begin{table}[htbp]
+\centering
+\caption{Table S3: Median time to next joint outbreak (years) by city and risk threshold, with 95\% confidence intervals. Values represent the x-intercepts of the dashed vertical lines in Figure 5, indicating the time (in years) at which 50\% of simulation paths are expected to experience their next joint outbreak. Confidence intervals (in parentheses) reflect uncertainty in the Kaplan-Meier survival estimates, which properly account for right-censoring of paths that never experience a second outbreak. The relatively narrow confidence intervals reflect high precision from aggregating across 1000 simulation paths per city. Values marked as ``---'' indicate that the 50\% threshold was not reached within the simulation window. Risk thresholds are defined as joint top 30\%, 20\%, and 10\% percentiles of disease burden.}
+\label{tab:survival_median_times}
+\begin{tabular}{lccc}
+\toprule
+\textbf{City} & \textbf{Top 30\%} & \textbf{Top 20\%} & \textbf{Top 10\%} \\
+\midrule
+\multicolumn{4}{l}{\textit{North}} \\
+Beijing & 3.0 (2.0--3.0) & 5.0 (4.0--6.0) & --- \\
+Lanzhou & 5.0 (5.0--6.0) & --- & --- \\
+Xian & 1.0 (1.0--1.0) & 2.0 (2.0--2.0) & 3.0 (3.0--3.0) \\
+\midrule
+\multicolumn{4}{l}{\textit{South}} \\
+Wuhan & 1.0 (1.0--1.0) & 2.0 (2.0--2.0) & 3.0 (3.0--3.0) \\
+Suzhou & 2.0 (2.0--2.0) & 3.0 (3.0--3.0) & 6.0 (5.0--6.0) \\
+Guangzhou & 3.0 (3.0--4.0) & 6.0 (6.0--7.0) & --- \\
+Wenzhou & 1.0 (1.0--1.0) & 1.0 (1.0--1.0) & 2.0 (2.0--2.0) \\
+Yunfu & 2.0 (2.0--2.0) & 3.0 (3.0--3.0) & 7.0 (6.0--8.0) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\clearpage
+
+% ===== FIGURES SECTION =====
+\subsection{Figures}
+
+\subsubsection{Distribution of Between-Year Cycle Lengths}
+\label{subsec:cycle_lengths}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{../figures/supplemental_Figure1_threshold_7.png}
+\caption{Figure S1: Distribution of between-year cycle lengths (months) among comparable models ($\Delta$AIC $< 7$) by city and pathogen, separated by geographic region (North vs South). Each panel displays boxplots of the between-year cycle lengths (in months) for each city within the specified region and pathogen combination. The asterisk (*) marks the best-performing model (lowest AIC) for each city-pathogen combination.}
+\label{fig:supplemental_cycle_lengths}
+\end{figure}
+
+\clearpage

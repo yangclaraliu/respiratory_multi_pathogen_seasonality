@@ -19,12 +19,12 @@ Because surveillance systems differ across cities, the raw data represent differ
 Cities were classified into northern and southern groups following the conventional Qinling–Huaihe geographical division, which separates regions with distinct climatic and respiratory epidemic profiles.
 The selection and compilation of influenza and RSV surveillance data are summarised in Figure %~\ref{fig:data_selection}.
 
-% \begin{figure}[htbp]
-%   \centering
-%   \includegraphics[width=0.8\textwidth]{figures/Flu-RSV.png}
-%   \caption{Selection and compilation of influenza and RSV data across the eight study cities. (a) Data selection workflow; (b) Geographic coverage and data representation.}
-%   \label{fig:data_selection}
-% \end{figure}
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{../figures/Figure 1.png}
+  \caption{Selection and compilation of influenza and RSV data across the eight study cities. (a) Data selection workflow; (b) Geographic coverage and data representation.}
+  \label{fig:data_selection}
+\end{figure}
 
 
 \subsection{Identifying within- and between-year cycles}
@@ -43,7 +43,7 @@ The upper limit of the between-year cycle lengths was further constrained by the
 For time series that do not include at least two full cycles of a given period length, MSTL does not test that between-year cycle length, as this is a requirement of the MSTL algorithm. 
 Model selection was performed using Akaike Information Criterion (AIC). 
 The optimal model for each city-pathogen combination was defined as having the minimum AIC value. 
-Following standard practice, we considered models with $\Delta$AIC $< 10$ (where $\Delta$AIC $= $ AIC$_i$ $-$ AIC$_{\text{min}}$) as having comparable empirical support. 
+Following standard practice, we considered models with $\Delta$AIC $< 7$ (where $\Delta$AIC $= $ AIC$_i$ $-$ AIC$_{\text{min}}$) as having comparable empirical support. 
 The optimal models and their comparable models were all included in further analysis (i.e. forward simulation and joint outbreak identification).
 The lowest AIC estimates achievable using a single-cycle model were compared against the lowest AIC estimates achievable using multi-cycle models.
 If the latter is lower, then we conclude that between-year patterns play a role in predicting the burden in the context of the city-pathogen combination.

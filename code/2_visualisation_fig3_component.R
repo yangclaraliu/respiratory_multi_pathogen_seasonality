@@ -10,7 +10,7 @@ LL_flu %>%
   dplyr::filter(model == "stl") %>% 
   group_by(city) %>% 
   mutate(metric_optimal = min(distribution_specific_AIC),
-         metric_similar = distribution_specific_AIC <= (metric_optimal + 10),
+         metric_similar = distribution_specific_AIC <= (metric_optimal + 7),
          step_size_standardised = case_when(step_size_char == "daily" ~ length_cycle1/30,
                                             step_size_char == "weekly" ~ length_cycle1/4,
                                             step_size_char == "monthly" ~ length_cycle1),
@@ -38,7 +38,7 @@ LL_rsv %>%
   dplyr::filter(model == "stl") %>% 
   group_by(city) %>% 
   mutate(metric_optimal = min(distribution_specific_AIC),
-         metric_similar = distribution_specific_AIC < (metric_optimal + 10),
+         metric_similar = distribution_specific_AIC < (metric_optimal + 7),
          # ll_relative = ll_sum_max/ll_sum,
          step_size_standardised = case_when(step_size_char == "daily" ~ length_cycle1/30,
                                             step_size_char == "weekly" ~ length_cycle1/4,
@@ -81,7 +81,7 @@ LL_flu %>%
   dplyr::filter(model == "mstl") %>% 
   group_by(city) %>% 
   mutate(metric_optimal = min(distribution_specific_AIC),
-         metric_similar = distribution_specific_AIC < (metric_optimal + 10),
+         metric_similar = distribution_specific_AIC < (metric_optimal + 7),
          # ll_sum_max = max(ll_sum),
          # ll_relative = if_else(ll_sum < 0, ll_sum_max/ll_sum, ll_sum/ll_sum_max),
          # ll_similar = sum(ll_relative >= 0.9) - 1,
@@ -111,7 +111,7 @@ LL_rsv %>%
   dplyr::filter(model == "mstl") %>% 
   group_by(city) %>% 
   mutate(metric_optimal = min(distribution_specific_AIC),
-         metric_similar = distribution_specific_AIC < (metric_optimal + 10),
+         metric_similar = distribution_specific_AIC < (metric_optimal + 7),
          # ll_sum_max = max(ll_sum),
          # ll_relative = if_else(ll_sum < 0, ll_sum_max/ll_sum, ll_sum/ll_sum_max),
          # ll_similar = sum(ll_relative >= 0.9) - 1,
@@ -287,14 +287,14 @@ get_comparable <- function(){
   return(tmp)
 }
 
-p5_tab_comparable <- get_comparable() %>% mutate(analysis = "Comparable Models")
+p5_tab_comparable <- get_comparable() %>% mutate(analysis = "Optimal and Comparable Models")
 
 p5_tab_comparable %>% 
   ggplot(., aes(x = step_size2_standardised, fill = direction)) +
   geom_density(alpha = 0.5) +
   theme_bw() +
-  labs(x = "Length of between-year cycles\namong comparable models (ΔAIC ≤ 10)",
-       y = "Density",
+  labs(x = "Length of between-year cycles\namong comparable models (ΔAIC < 7)",
+       y = "Probability density",
        fill = "Geographic category",
        color = "Geographic category") +
   facet_grid(analysis~disease) +

@@ -32,6 +32,10 @@
 \usepackage{siunitx}              % Proper formatting for units
 \sisetup{detect-all}              % Auto-detect font settings
 
+% Date formatting
+\usepackage[ddmmyyyy]{datetime}   % Date format: day-month-year
+\renewcommand{\dateseparator}{-}  % Use hyphen as separator
+
 % References and citations
 \usepackage{natbib}               % Bibliography management
 \usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}  % Blue hyperlinks
@@ -77,4 +81,7 @@ respiratory pathogens \sep influenza \sep RSV \sep seasonal dynamics \sep surviv
 \bibliography{bib/references}
 
 \end{document}
+
+
+
 
