@@ -3,3 +3,105 @@
 % search strategy
 % data table: literature and data characteristics and sources
 
+
+\section*{Supplementary Text 1. Literature search strategy}
+
+We identified city-level surveillance data for respiratory syncytial virus (RSV) and influenza virus (InfV) through structured searches in PubMed. Searches were conducted on 12 August 2024, with no language restrictions. The full search strings and screening criteria are provided below.
+
+\subsection*{RSV search}
+
+The PubMed search string was:
+
+\begin{verbatim}
+("Respiratory Syncytial Viruses"[Mesh] OR RSV[Title/Abstract] 
+ OR "respiratory syncytial"[Title/Abstract])
+AND (China[Mesh] OR China[Title/Abstract] OR Chinese[Title/Abstract])
+\end{verbatim}
+
+Studies were included if they met all of the following criteria:
+\begin{itemize}
+    \item Surveillance data reported at the prefecture- or city-level (administrative level two);
+    \item At least five consecutive years of observations;
+    \item Monthly or weekly temporal resolution;
+    \item Laboratory-confirmed RSV indicators (positivity among ARI/LRTI inpatients or outpatients).
+\end{itemize}
+
+Through this process, eight cities were identified with eligible RSV time series: Beijing, Lanzhou, Xi’an, Wuhan, Suzhou, Wenzhou, Guangzhou, and Yunfu.
+
+\subsection*{Influenza search}
+
+For the same eight cities, we applied a parallel PubMed search using the following query:
+
+\begin{verbatim}
+("Influenza, Human"[Mesh] OR influenza[Title/Abstract])
+AND (China[Mesh] OR China[Title/Abstract] OR Chinese[Title/Abstract])
+AND "last 10 years"[PDat]
+\end{verbatim}
+
+The same inclusion criteria were applied (prefecture-level data, ≥5 years of continuous observations, and monthly or weekly reporting). For cities with multiple eligible influenza series, we selected the dataset with the longest uninterrupted coverage and the most specific virological definition. Data sources corresponding to each city–pathogen pair are listed in Supplementary Table~S1.
+
+
+
+
+
+
+\begin{table}[htbp]
+    \centering
+    \renewcommand{\arraystretch}{1.25}
+    \begin{threeparttable}
+    \caption{Supplementary Table S1. Surveillance indicator definitions for RSV and influenza (InfV) across included Chinese cities}
+    \begin{tabular}{@{}llllll@{}}
+    \toprule
+    City & Pathogen & Indicator definition & Clinical setting & Laboratory method & Reference \\ 
+    \midrule
+    
+    Beijing & RSV & RSV positivity among ARI inpatients & Inpatient (ARI) & IF on NPA & [a] \\
+    Beijing & InfV & Influenza positivity in ILI cases & Outpatient (ILI) & Culture or throat swab PCR & [b] \\
+    
+    Xi’an & RSV & RSV positivity among ARI inpatients & Inpatient (ARI) & Antigen / mixed methods & [c] \\
+    Xi’an & InfV & ILI case counts (syndromic) & Outpatient (ILI) & Not virological & [d] \\
+    
+    Lanzhou & RSV & RSV positivity among ARI inpatients & Inpatient (ARI) & PCR + sequencing (NPA) & [e] \\
+    Lanzhou & InfV & Clinically diagnosed influenza cases & Outpatient/inpatient & Clinical diagnosis & [f] \\
+    
+    Wuhan & RSV & RSV positivity among ARI inpatients & Inpatient (ARI) & IF on NPA & [g] \\
+    Wuhan & InfV & Influenza positivity in ILI cases & Outpatient (ILI) & RT-PCR & [h] \\
+    
+    Wenzhou & RSV & RSV positivity among LRTI inpatients & Inpatient (LRTI) & DFA on deep airway secretions & [i] \\
+    Wenzhou & InfV & Influenza positivity in LRTI inpatients & Inpatient (LRTI) & IF on NPA & [j] \\
+    
+    Suzhou & RSV & RSV positivity in neonatal LRTI inpatients & Inpatient (LRTI, neonatal) & DFA on NPA & [k] \\
+    Suzhou & InfV & Influenza positivity in SARI inpatients <5y & Inpatient (SARI) & RT-PCR on NPA & [l] \\
+    
+    Guangzhou & RSV & RSV positivity in ARI patients & In-/outpatient & qPCR on NP swabs & [m] \\
+    Guangzhou & InfV & Influenza positivity in ILI outpatients & Outpatient (ILI) & PCR on throat swabs & [n] \\
+    
+    Yunfu & RSV & RSV positivity in pediatric inpatients & Inpatient (pediatric) & IF on NPA & [o] \\
+    Yunfu & InfV & Influenza positivity in ILI outpatients & Outpatient (ILI) & Virus isolation + PCR & [p] \\
+    
+    \bottomrule
+    \end{tabular}
+    
+    \begin{tablenotes}[flushleft]
+    \footnotesize
+    \item [a] Cui G et al. \textit{PLoS One}. 2013.
+    \item [b] Wu S et al. \textit{Influenza Other Respir Viruses}. 2018.
+    \item [c] Zhang L et al. \textit{Modern Preventive Medicine}. 2018.
+    \item [d] Chen D et al. \textit{Entropy}. 2023.
+    \item [e] Liang X et al. \textit{Medicine}. 2019.
+    \item [f] Liu H-X et al. \textit{Dis Surveillance}. 2022.
+    \item [g] Zhang X et al. \textit{Front Pediatr}. 2023.
+    \item [h] Liu X et al. \textit{BMC Infect Dis}. 2023.
+    \item [i] Lin J. Master's thesis, Wenzhou Medical University. 2011.
+    \item [j] Zhong P-P et al. \textit{Chin J Contemp Pediatr}. 2016.
+    \item [k] Lu L et al. \textit{BMC Infect Dis}. 2015.
+    \item [l] Yu J et al. \textit{Pediatr Infect Dis J}. 2019.
+    \item [m] Zou L et al. \textit{Front Microbiol}. 2016.
+    \item [n] Yan Z-L et al. \textit{BMC Public Health}. 2024.
+    \item [o] Qin C et al. \textit{China Practical Medicine}. 2022.
+    \item [p] Peng L-X et al. \textit{Practical Preventive Medicine}. 2016.
+    \end{tablenotes}
+    
+    \end{threeparttable}
+    \end{table}
+    

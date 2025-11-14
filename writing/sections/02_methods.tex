@@ -5,26 +5,43 @@
 % please make sure you mention the north and south categorisation over here
 % in here, please mention that all data was log-transformed before modelling, and mention what we did for 0 values
 
-% how did you identify literature for RSV and for influenza? Please refer to the full search term in the supplemental material.
- 
-% as a result of that what are the cities you selected? Where are they? What are their characteristics?
+\subsection{Data Sources and Data Preprocessing}
 
-% what indicators did you extract? Refer to your supplementary table.
+% NOTE: Full terms and abbreviations for RSV and InfV are given here.
+% We can review and adjust the placement of first-use definitions after the manuscript is complete.
+We assembled historical surveillance time series of respiratory syncytial virus (RSV) and influenza virus (InfV) at the prefecture- or city-level (administrative level two) in mainland China.
+This administrative scale was selected because provincial jurisdictions often span multiple climatic zones and contain substantial internal demographic and socioeconomic heterogeneity, such that province-level aggregation can obscure local variation in respiratory disease seasonality.
+Eligible time series were required to provide at least five consecutive years of data with monthly or finer temporal resolution.
 
-We compiled historical time series of respiratory disease burden for respiratory syncytial virus (RSV) and influenza virus (influenza) across eight Chinese cities: Beijing, Lanzhou, Xi'an, Wuhan, Suzhou, Wenzhou, Guangzhou, and Yunfu.
-These cities were selected because (i) both RSV and influenza surveillance data were available at the city or metropolitan level, (ii) the available data spanned at least five years, and (iii) the data had monthly or weekly temporal resolution.
-RSV data were predominantly derived from laboratory-confirmed positivity among acute or lower respiratory tract infection inpatients, using immunofluorescence, antigen testing, PCR, or mixed virological methods depending on the city.
-Influenza data were obtained from influenza-like illness (ILI) outpatient positivity surveillance, virological testing data, or clinically reported influenza diagnoses, depending on local surveillance protocols.
-Because surveillance systems differ across cities, the raw data represent different but epidemiologically comparable measures of pathogen-specific respiratory disease burden.
-Cities were classified into northern and southern groups following the conventional Qinling–Huaihe geographical division, which separates regions with distinct climatic and respiratory epidemic profiles.
-The selection and compilation of influenza and RSV surveillance data are summarised in Figure %~\ref{fig:data_selection}.
+To identify RSV surveillance data, we conducted a structured literature search in PubMed and used a recent systematic review of RSV seasonality in China as an additional source.
+The full search terms and screening procedures are provided in Supplementary Text~1.
+Studies were included if they reported laboratory-confirmed RSV indicators at the prefecture-level, met the minimum duration requirement, and provided monthly or weekly measurements.
+This process identified eight eligible cities: Beijing, Lanzhou, Xi’an, Wuhan, Suzhou, Wenzhou, Guangzhou, and Yunfu.
 
-% \begin{figure}[htbp]
-%   \centering
-%   \includegraphics[width=0.8\textwidth]{figures/Flu-RSV.png}
-%   \caption{Selection and compilation of influenza and RSV data across the eight study cities. (a) Data selection workflow; (b) Geographic coverage and data representation.}
-%   \label{fig:data_selection}
-% \end{figure}
+For the same set of eight cities, we subsequently identified influenza surveillance data using a parallel PubMed search strategy described in Supplementary Text~1.
+Influenza data were more widely available than RSV, and for each city we retained the time series with the longest continuous span and the most specific virological definitions when multiple candidates existed.
+
+To support downstream geographic comparisons, cities were classified into northern and southern groups based on the Qinling–Huaihe climatic demarcation.
+Beijing, Lanzhou, and Xi’an were designated as northern cities, whereas Wuhan, Suzhou, Wenzhou, Guangzhou, and Yunfu were classified as southern cities.
+
+The underlying surveillance indicators and their data sources are summarised in Table~\ref{tab:surveillance_data}.
+% NOTE: The following two sentences may be overly detailed; 
+% we can simplify them later if needed.
+RSV indicators were generally defined as laboratory-confirmed positivity among inpatients with acute respiratory infection (ARI) or lower respiratory tract infection (LRTI), using immunofluorescence (IF), direct fluorescent antibody (DFA), antigen detection, PCR, qPCR, or combined virological methods applied to nasopharyngeal aspirates, nasopharyngeal swabs, or deep airway secretions.
+Influenza surveillance included positivity among influenza-like illness (ILI) outpatients (culture, PCR, or virus isolation), positivity among specific inpatient syndromes (e.g., severe acute respiratory infection in children under five), or clinically reported influenza diagnoses.
+Although these surveillance systems differ across cities, the resulting outcomes represent heterogeneous but epidemiologically comparable measures of pathogen-specific respiratory disease burden.
+Additional indicator definitions, laboratory methods, and age groups are detailed in Supplementary Table~S1.
+
+All series were converted into time-series objects at their native reporting frequency (monthly, weekly, or daily).
+For count-based outcomes (cases), zero values were rare; when present, they were replaced with 1 prior to transformation to ensure that logarithms were defined.
+We then applied a natural logarithm transformation, $\log(y)$, to all case-based series.
+For proportion-based outcomes (rates), we first converted percentage positivity to a 0--1 fraction by dividing by 100 and then applied a natural logarithm transformation, $\log(y/100)$.
+These transformations stabilised variance and placed all outcomes on a comparable log-intensity scale prior to seasonal decomposition and model fitting.
+
+To enable comparison of estimated seasonal cycle lengths across cities with different reporting frequencies, the within-year and between-year periodicities inferred from STL or MSTL models were normalised to a common monthly unit.
+Cycles estimated from daily data were divided by 30, weekly cycles by 4, and monthly cycles retained their original scale.
+This produced standardised cycle-length metrics (\textit{step\_size\_standardised}, \textit{step\_size1\_standardised}, and \textit{step\_size2\_standardised}) that were used for model comparison and in subsequent survival analyses of joint outbreak intervals.
+
 
 
 \subsection{Identifying within- and between-year cycles}
