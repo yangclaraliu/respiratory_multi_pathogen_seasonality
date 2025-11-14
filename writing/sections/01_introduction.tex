@@ -17,29 +17,29 @@
 % (3) methods for studying seasonality
 % avoid talking about forecasting - understanding the epidemiology and use that for concurrent outbreak preparedness
 
-Respiratory diseases, notably influenza and Respiratory Syncytial Virus (RSV), significantly impact global health, leading to substantial morbidity and mortality annually. 
-The unpredictability of these diseases' outbreaks underscores the importance of developing accurate prediction models to enhance public health response and preparedness.
-The traditional time-series prediction models, primarily focused on single-season cycles, have been instrumental in forecasting the annual patterns of these diseases. However, their efficacy is limited when it comes to capturing the complex interannual variability of disease spread. 
-This variability is influenced by a range of factors beyond simple seasonal trends, making it a critical aspect of disease dynamics that current models often overlook.
-This gap in forecasting capabilities points to a need for models that can dynamically adapt to the shifting patterns of disease spread. 
-There is a particular deficiency in models that effectively integrate multiple seasonal patterns and external predictors to accurately forecast interannual fluctuations. 
-This limitation highlights the urgent need for more sophisticated predictive tools.
+% Respiratory diseases, such as seasonal influenza and Respiratory Syncytial Virus (RSV), significantly impact global health, leading to large morbidity and mortality annually. 
+% The unpredictability of these diseases' outbreaks underscores the importance of developing accurate prediction models to enhance public health response and preparedness.
+% The traditional time-series prediction models, primarily focused on single-season cycles, have been instrumental in forecasting the annual patterns of these diseases. However, their efficacy is limited when it comes to capturing the complex interannual variability of disease spread. 
+% This variability is influenced by a range of factors beyond simple seasonal trends, making it a critical aspect of disease dynamics that current models often overlook.
+% This gap in forecasting capabilities points to a need for models that can dynamically adapt to the shifting patterns of disease spread. 
+% There is a particular deficiency in models that effectively integrate multiple seasonal patterns and external predictors to accurately forecast interannual fluctuations. 
+% This limitation highlights the urgent need for more sophisticated predictive tools.
 
-Our research aims to bridge this gap by exploring the application of the Multiple Seasonal-Trend decomposition using Loess (MSTL) algorithm. 
-MSTL's capacity to model time series with multiple seasonality presents a novel approach to understanding and predicting both annual and interannual disease patterns. 
+% Our research aims to bridge this gap by exploring the application of the Multiple Seasonal-Trend decomposition using Loess (MSTL) algorithm. 
+% MSTL's capacity to model time series with multiple seasonality presents a novel approach to understanding and predicting both annual and interannual disease patterns. 
 % This method could significantly improve the accuracy of predictions by providing a more nuanced understanding of disease dynamics.
 % The potential of improved prediction models like MSTL to offer actionable insights for public health officials is immense. 
-By enabling better planning and resource allocation, these models could play a pivotal role in enhancing public health strategies and intervention planning. 
+% By enabling better planning and resource allocation, these models could play a pivotal role in enhancing public health strategies and intervention planning. 
 %  Accurately forecasting respiratory disease patterns could, therefore, have broad implications for public health, potentially transforming how outbreaks are managed and mitigated.
-This paper is structured as follows: We first delve into the methodology behind employing the MSTL algorithm for capturing interannual cycles. 
-We then present an analysis of the algorithm's efficacy in predicting respiratory disease patterns, followed by a discussion on the implications of our findings for improving disease forecasting and public health strategy. 
-We conclude with reflections on the study's limitations and propose future research directions.
+% This paper is structured as follows: We first delve into the methodology behind employing the MSTL algorithm for capturing interannual cycles. 
+% We then present an analysis of the algorithm's efficacy in predicting respiratory disease patterns, followed by a discussion on the implications of our findings for improving disease forecasting and public health strategy. 
+% We conclude with reflections on the study's limitations and propose future research directions.
 
 
 \section{Introduction}
 
-Seasonal respiratory pathogens, notably influenza viruses and respiratory syncytial virus (RSV), continue to impose a sizeable and recurrent burden on population health and health systems.  
-Globally, seasonal influenza causes an estimated 3--5 million cases of severe illness and 290{,}000--650{,}000 respiratory deaths each year \cite{who_influenza_burden,Paget2019}, underscoring the persistent magnitude of wintertime surges even in the vaccine era.  
+Seasonal respiratory pathogens, such as seasonal influenza viruses and respiratory syncytial virus (RSV), lead to large disease burden worldwide, disproportionally affecting children and older adults.  
+Globally, seasonal influenza causes an estimated 3--5 million cases of severe illness and \num{290000}--\num{650000} respiratory deaths each year \cite{who_influenza_burden,Paget2019}, underscoring the persistent magnitude of wintertime surges even in the vaccine era.  
 Beyond influenza, RSV is increasingly recognised as a major contributor to hospitalisations among both infants and older adults worldwide, accounting for approximately 5.2 million lower–respiratory–tract infections and nearly half a million hospitalisations among adults aged 60~years or older in 2019 \cite{Shi2023,EClinicalRSV2024}.  
 These seasonal recurrences—while familiar—are far from uniform: their intensity, timing, and composition vary across years and regions, complicating preparedness and response.  
 
