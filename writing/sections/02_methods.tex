@@ -1,5 +1,5 @@
 % ===== METHODS =====
-\section{Methods}
+\section{Methods (\methodswordcount~words)}
 % \subsection{Data Sources}
 % @kemin-zhu please populate this section
 % please make sure you mention the north and south categorisation over here
@@ -40,7 +40,7 @@ These transformations stabilised variance and placed all outcomes on a comparabl
 
 To enable comparison of estimated seasonal cycle lengths across cities with different reporting frequencies, the within-year and between-year periodicities inferred from STL or MSTL models were normalised to a common monthly unit.
 Cycles estimated from daily data were divided by 30, weekly cycles by 4, and monthly cycles retained their original scale.
-This produced standardised cycle-length metrics (\textit{step\_size\_standardised}, \textit{step\_size1\_standardised}, and \textit{step\_size2\_standardised}) that were used for model comparison and in subsequent survival analyses of joint outbreak intervals.
+This produced standardised cycle-length metrics (\textit{step\_size\_standardised}, \textit{step\_size1\_standardised}, and \textit{step\_size2\_standardised}) that were used for model comparison and in subsequent survival analyses of concurrent outbreak intervals.
 
 \begin{figure}[htbp]
   \centering
@@ -67,12 +67,12 @@ For time series that do not include at least two full cycles of a given period l
 Model selection was performed using Akaike Information Criterion (AIC). 
 The optimal model for each city-pathogen combination was defined as having the minimum AIC value. 
 Following standard practice, we considered models with $\Delta$AIC $< 7$ (where $\Delta$AIC $= $ AIC$_i$ $-$ AIC$_{\text{min}}$) as having comparable empirical support. 
-The optimal models and their comparable models were all included in further analysis (i.e. forward simulation and joint outbreak identification).
+The optimal models and their comparable models were all included in further analysis (i.e. forward simulation and concurrent outbreak identification).
 The lowest AIC estimates achievable using a single-cycle model were compared against the lowest AIC estimates achievable using multi-cycle models.
 If the latter is lower, then we conclude that between-year patterns play a role in predicting the burden in the context of the city-pathogen combination.
 Bayesian Information Criterion (BIC) was also examined as a sensitivity analysis.
 
-\subsection{Forward simulations of outbreaks and joint outbreak identification}
+\subsection{Forward simulations of outbreaks and concurrent outbreak identification}
 In order to assess the implication of within- and between-year patterns on future disease burden, we performed forward simulations based on observed disease burden history and the optimal models derived using the methods above.
 These forward simulations were performed for long timeframes to ensure that within- and between-year patterns estimated using different time-series may be overlaid for a given city.
 Within- and between-year patterns were simply repeated in these forward simulations.
@@ -83,20 +83,20 @@ This stochastic simulation framework was developed to characterise the uncertain
 When a given city-pathogen combination has $n$ optimal models, then $1000 \times n$ stochastic forward trajectories were generated. 
 All forward simulations were performed based on their original time scale, as presented in the source literature.
 
-Using the forward simulations of both seasonal influenza and RSV disease burden, we explore the possibility of joint outbreaks across different outbreak thresholds. 
+Using the forward simulations of both seasonal influenza and RSV disease burden, we explore the possibility of concurrent outbreaks across different outbreak thresholds. 
 The measure of seasonal influenza and RSV disease burden relied on different epidemiological measures depending on the city and health systems (e.g. attributable hospital admissions, test positive rates) and therefore cannot be directly compared on their original scale.
 Therefore, we rescaled these measures by decile, leaving the 1st and 10th deciles unbounded.
-Joint outbreaks were defined as when seasonal influenza and RSV disease burden simultaneously exceeded the 70th, 80th, and 90th percentiles of their observed disease burden history.
-A year is considered a joint outbreak year if the joint outbreak threshold has been exceeded at least once in that year.
+Concurrent outbreaks were defined as when seasonal influenza and RSV disease burden simultaneously exceeded the 70th, 80th, and 90th percentiles of their observed disease burden history.
+A year is considered a concurrent outbreak year if the concurrent outbreak threshold has been exceeded at least once in that year.
 
-\subsection{Characterising joint outbreak frequency using survival analysis}
-Inter-joint outbreak intervals were calculated as the time elapsed between successive joint outbreak years.
-Directly counting the intervals between joint outbreaks over-weights short intervals as they have more placement opportunities given the finite forward simulation window.
-It also introduces right-censoring issues when no joint outbreak or only one joint outbreak was observed in the forward simulation window.
-To address these issues, we reframed the interval detection as a time-to-event problem, and estimated the inter-joint outbreak intervals using Kaplan-Meier survival analysis, with left truncation and right-censoring.
-The survival curve was fitted for each city at all three different joint outbreak thresholds defined above.
-With this setup, we can calculate inter-joint outbreak intervals.
-In the context of this study, we used the time by which 50\% of the forward simulation paths ($1000 \times n$ models) are expected to experience their next joint outbreak event as the inter-joint outbreak interval. 
+\subsection{Characterising concurrent outbreak frequency using survival analysis}
+Inter-concurrent outbreak intervals were calculated as the time elapsed between successive concurrent outbreak years.
+Directly counting the intervals between concurrent outbreaks over-weights short intervals as they have more placement opportunities given the finite forward simulation window.
+It also introduces right-censoring issues when no concurrent outbreak or only one concurrent outbreak was observed in the forward simulation window.
+To address these issues, we reframed the interval detection as a time-to-event problem, and estimated the inter-concurrent outbreak intervals using Kaplan-Meier survival analysis, with left truncation and right-censoring.
+The survival curve was fitted for each city at all three different concurrent outbreak thresholds defined above.
+With this setup, we can calculate inter-concurrent outbreak intervals.
+In the context of this study, we used the time by which 50\% of the forward simulation paths ($1000 \times n$ models) are expected to experience their next concurrent outbreak event as the inter-concurrent outbreak interval. 
 
 \subsection{Software and code availability}
 All aforementioned methods and analyses were implemented in R (v4.2.2) using the following \texttt{package}s: \texttt{forecast}, \texttt{mstl}, and \texttt{survival}. All codes are available on the GitHub repository: \url{https://github.com/yangclaraliu/respiratory_multi_pathogen_seasonality}.

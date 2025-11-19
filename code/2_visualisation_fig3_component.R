@@ -314,7 +314,7 @@ p5_tab_comparable %>%
         axis.title = element_text(size = 14),
         axis.text = element_text(size = 14)) -> p5
 
-ggsave("figs/fig_s1.jpg")
+# ggsave("figs/fig_s1.jpg")
 
 plot_grid(p_top, p5, nrow = 2,
           labels = c("", "(E)"),

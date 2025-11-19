@@ -196,6 +196,11 @@ for(this_disease in c("Influenza", "RSV")){
   }
 }
 
+# Overall comparison across all cities (pooling North and South)
+cat("\nOverall city-level comparison (Influenza vs RSV, all 8 cities):\n")
+overall_disease_test <- t.test(city_mean_cycle ~ disease, data = city_test_data)
+print(overall_disease_test)
+
 # Within-region comparisons (city-level)
 for(this_dir in c("North", "South")){
   dir_city_data <- city_test_data %>% filter(direction == this_dir)

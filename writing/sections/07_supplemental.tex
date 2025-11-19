@@ -7,8 +7,9 @@
 \subsection*{Table of Contents}
 \begin{itemize}
     \item \hyperref[tab:comparable_models]{Table S1: Number of comparable models by city and pathogen} \dotfill \pageref{tab:comparable_models}
-    \item \hyperref[tab:joint_outbreak_probability]{Table S2: Median probability of joint outbreaks by risk threshold} \dotfill \pageref{tab:joint_outbreak_probability}
-    \item \hyperref[tab:survival_median_times]{Table S3: Median time to next joint outbreak by risk threshold} \dotfill \pageref{tab:survival_median_times}
+    \item \hyperref[tab:joint_outbreak_probability]{Table S2: Median probability of concurrent outbreaks by risk threshold} \dotfill \pageref{tab:joint_outbreak_probability}
+    \item \hyperref[tab:survival_median_times]{Table S3: Median time to next concurrent outbreak by risk threshold} \dotfill \pageref{tab:survival_median_times}
+    \item \hyperref[tab:optimal_cycles]{Table S4: Optimal within-year and between-year cycle lengths} \dotfill \pageref{tab:optimal_cycles}
     \item \hyperref[fig:supplemental_cycle_lengths]{Figure S1: Distribution of between-year cycle lengths} \dotfill \pageref{fig:supplemental_cycle_lengths}
 \end{itemize}
 
@@ -22,7 +23,7 @@
 
 \begin{table}[htbp]
 \centering
-\caption{Table S1: Number of comparable models ($\Delta$AIC $\leq$ 10) per city and pathogen. This table illustrates the distribution of model availability across the eight study cities, highlighting the variation in the number of comparable models per city.}
+\caption{Table S1: Number of comparable models ($\Delta$AIC $< 7$) per city and pathogen. This table illustrates the distribution of model availability across the eight study cities, highlighting the variation in the number of comparable models per city.}
 \label{tab:comparable_models}
 \begin{tabular}{lcc}
 \toprule
@@ -49,12 +50,12 @@ Yunfu & 2 & 2 \\
 
 \clearpage
 
-\subsubsection{Median Probability of Joint Outbreaks by Risk Threshold}
+\subsubsection{Median Probability of Concurrent Outbreaks by Risk Threshold}
 \label{subsec:joint_outbreak_probability}
 
 \begin{table}[htbp]
 \centering
-\caption{Table S2: Median probability of joint outbreaks by city and risk threshold. Values represent the median proportion of years with concurrent high-risk periods for both Influenza and RSV across 1000 simulation paths. Risk thresholds are defined as joint top 30\%, 20\%, and 10\% percentiles of disease burden.}
+\caption{Table S2: Median probability of concurrent outbreaks by city and risk threshold. Values represent the median proportion of years with concurrent high-risk periods for both Influenza and RSV across 1000 simulation paths. Risk thresholds are defined as joint top 30\%, 20\%, and 10\% percentiles of disease burden.}
 \label{tab:joint_outbreak_probability}
 \begin{tabular}{lccc}
 \toprule
@@ -77,12 +78,12 @@ Yunfu & 0.375 & 0.188 & 0.125 \\
 
 \clearpage
 
-\subsubsection{Median Time to Next Joint Outbreak by Risk Threshold}
+\subsubsection{Median Time to Next Concurrent Outbreak by Risk Threshold}
 \label{subsec:survival_median_times}
 
 \begin{table}[htbp]
 \centering
-\caption{Table S3: Median time to next joint outbreak (years) by city and risk threshold, with 95\% confidence intervals. Values represent the x-intercepts of the dashed vertical lines in Figure 5, indicating the time (in years) at which 50\% of simulation paths are expected to experience their next joint outbreak. Confidence intervals (in parentheses) reflect uncertainty in the Kaplan-Meier survival estimates, which properly account for right-censoring of paths that never experience a second outbreak. The relatively narrow confidence intervals reflect high precision from aggregating across 1000 simulation paths per city. Values marked as ``---'' indicate that the 50\% threshold was not reached within the simulation window. Risk thresholds are defined as joint top 30\%, 20\%, and 10\% percentiles of disease burden.}
+\caption{Table S3: Median time to next concurrent outbreak (years) by city and risk threshold, with 95\% confidence intervals. Values represent the x-intercepts of the dashed vertical lines in Figure 6, indicating the time (in years) at which 50\% of simulation paths are expected to experience their next concurrent outbreak. Confidence intervals (in parentheses) reflect uncertainty in the Kaplan-Meier survival estimates, which properly account for right-censoring of paths that never experience a second outbreak. The relatively narrow confidence intervals reflect high precision from aggregating across 1000 simulation paths per city. Values marked as ``---'' indicate that the 50\% threshold was not reached within the simulation window. Risk thresholds are defined as joint top 30\%, 20\%, and 10\% percentiles of disease burden.}
 \label{tab:survival_median_times}
 \begin{tabular}{lccc}
 \toprule
@@ -99,6 +100,36 @@ Suzhou & 2.0 (2.0--2.0) & 3.0 (3.0--3.0) & 6.0 (5.0--6.0) \\
 Guangzhou & 3.0 (3.0--4.0) & 6.0 (6.0--7.0) & --- \\
 Wenzhou & 1.0 (1.0--1.0) & 1.0 (1.0--1.0) & 2.0 (2.0--2.0) \\
 Yunfu & 2.0 (2.0--2.0) & 3.0 (3.0--3.0) & 7.0 (6.0--8.0) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\clearpage
+
+\subsubsection{Optimal Within-Year and Between-Year Cycle Lengths}
+\label{subsec:optimal_cycles}
+
+\begin{table}[htbp]
+\centering
+\caption{Table S4: Optimal within-year and between-year cycle lengths (months) for each city and pathogen combination. Values represent the cycle lengths of the best-performing model (lowest AIC) for each city-pathogen pair. Within-year cycles are shown for both pathogens; between-year cycles are only shown for models that included multi-seasonal decomposition (MSTL). These values correspond to the data presented in Figure 3 (A) and (B) of the main text.}
+\label{tab:optimal_cycles}
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Region} & \textbf{City} & \multicolumn{2}{c}{\textbf{Within-year cycle (months)}} & \multicolumn{2}{c}{\textbf{Between-year cycle (months)}} \\
+\cmidrule(lr){3-4} \cmidrule(lr){5-6}
+ & & \textbf{Influenza} & \textbf{RSV} & \textbf{Influenza} & \textbf{RSV} \\
+\midrule
+\multicolumn{6}{l}{\textit{North}} \\
+ & Beijing & 13.0 & 10.0 & 28.0 & 24.0 \\
+ & Lanzhou & 13.0 & 13.0 & 20.0 & 35.0 \\
+ & Xian & 13.0 & 13.0 & 36.0 & 33.0 \\
+\midrule
+\multicolumn{6}{l}{\textit{South}} \\
+ & Suzhou & 14.0 & 12.0 & 26.0 & 21.0 \\
+ & Wuhan & 13.0 & 12.0 & 30.0 & 19.0 \\
+ & Wenzhou & 12.0 & 12.0 & 22.0 & 18.0 \\
+ & Guangzhou & 13.0 & 12.0 & 34.0 & 31.0 \\
+ & Yunfu & 14.0 & 10.0 & 21.0 & 24.0 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -155,7 +186,7 @@ AND (China[Mesh] OR China[Title/Abstract] OR Chinese[Title/Abstract])
 AND "last 10 years"[PDat]
 \end{verbatim}
 
-The same inclusion criteria were applied (prefecture-level data, ≥5 years of continuous observations, and monthly or weekly reporting). For cities with multiple eligible influenza series, we selected the dataset with the longest uninterrupted coverage and the most specific virological definition. Data sources corresponding to each city–pathogen pair are listed in Supplementary Table~S1.
+The same inclusion criteria were applied (prefecture-level data, $\geq$5 years of continuous observations, and monthly or weekly reporting). For cities with multiple eligible influenza series, we selected the dataset with the longest uninterrupted coverage and the most specific virological definition. Data sources corresponding to each city–pathogen pair are listed in Supplementary Table~S1.
 
 
 \begin{table}[htbp]
@@ -201,20 +232,20 @@ The same inclusion criteria were applied (prefecture-level data, ≥5 years of c
 
 \footnotesize
 \noindent
-[a] Cui et al. 2013\\
-[b] Wu et al. 2018\\
-[c] Zhang et al. 2018\\
-[d] Chen et al. 2023\\
-[e] Liang et al. 2019\\
-[f] Liu et al. 2022\\
-[g] Zhang et al. 2023\\
-[h] Liu et al. 2023\\
-[i] Lin 2011\\
-[j] Zhong et al. 2016\\
-[k] Lu et al. 2015\\
-[l] Yu et al. 2019\\
-[m] Zou et al. 2016\\
-[n] Yan et al. 2024\\
-[o] Qin et al. 2022\\
+[a] Cui et al. 2013\par
+[b] Wu et al. 2018\par
+[c] Zhang et al. 2018\par
+[d] Chen et al. 2023\par
+[e] Liang et al. 2019\par
+[f] Liu et al. 2022\par
+[g] Zhang et al. 2023\par
+[h] Liu et al. 2023\par
+[i] Lin 2011\par
+[j] Zhong et al. 2016\par
+[k] Lu et al. 2015\par
+[l] Yu et al. 2019\par
+[m] Zou et al. 2016\par
+[n] Yan et al. 2024\par
+[o] Qin et al. 2022\par
 [p] Peng et al. 2016
 \normalsize

@@ -14,6 +14,9 @@
 % Line numbers for review
 \usepackage{lineno}
 \modulolinenumbers[1]
+% Exclude captions from line numbering
+\let\oldcaption\caption
+\renewcommand{\caption}[1]{\nolinenumbers\oldcaption{#1}\linenumbers}
 
 % Math
 \usepackage{amsmath,amssymb,amsfonts}
@@ -40,6 +43,45 @@
 \usepackage{natbib}               % Bibliography management
 \usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}  % Blue hyperlinks
 \usepackage[capitalise,noabbrev]{cleveref} % Smart cross-references
+
+% Word count helper for all sections (requires --shell-escape)
+% Read word count at document start into macros
+\immediate\write18{texcount -1 -sum -q sections/01_introduction.tex > build/introduction_wc.tmp}
+\immediate\write18{texcount -1 -sum -q sections/02_methods.tex > build/methods_wc.tmp}
+\immediate\write18{texcount -1 -sum -q sections/03_results.tex > build/results_wc.tmp}
+\immediate\write18{texcount -1 -sum -q sections/04_discussion.tex > build/discussion_wc.tmp}
+\newread\introductionwcread
+\newread\methodswcread
+\newread\resultswcread
+\newread\discussionwcread
+\IfFileExists{build/introduction_wc.tmp}{%
+  \openin\introductionwcread=build/introduction_wc.tmp
+  \read\introductionwcread to \introductionwordcount
+  \closein\introductionwcread
+}{%
+  \def\introductionwordcount{0}%
+}
+\IfFileExists{build/methods_wc.tmp}{%
+  \openin\methodswcread=build/methods_wc.tmp
+  \read\methodswcread to \methodswordcount
+  \closein\methodswcread
+}{%
+  \def\methodswordcount{0}%
+}
+\IfFileExists{build/results_wc.tmp}{%
+  \openin\resultswcread=build/results_wc.tmp
+  \read\resultswcread to \resultswordcount
+  \closein\resultswcread
+}{%
+  \def\resultswordcount{0}%
+}
+\IfFileExists{build/discussion_wc.tmp}{%
+  \openin\discussionwcread=build/discussion_wc.tmp
+  \read\discussionwcread to \discussionwordcount
+  \closein\discussionwcread
+}{%
+  \def\discussionwordcount{0}%
+}
 
 % Journal information
 \journal{Epidemics}
@@ -78,8 +120,8 @@ respiratory pathogens \sep influenza \sep RSV \sep seasonal dynamics \sep surviv
 \input{sections/02_methods}
 \input{sections/03_results}
 \input{sections/04_discussion}
-\input{sections/05_conclusions}
-\input{sections/06_acknowledgments}
+%\input{sections/05_conclusions}
+%\input{sections/06_acknowledgments}
 
 % ===== REFERENCES =====
 \bibliographystyle{elsarticle-harv}

@@ -1,61 +1,119 @@
 % ===== DISCUSSION =====
-\section{Discussion}
+\section{Discussion (\discussionwordcount~words)}
 
-% TODO: AI - Write discussion section (1200-1800 words)
-% Structure:
-% 1. Interpretation of main findings
-% 2. Comparison with existing literature
-% 3. Methodological considerations
-% 4. Clinical and public health implications
-% 5. Limitations and future directions
+% summary
+% 1. multi-year cycle matters across multiple Chinese cities; MSTL + rigorous model selection recover between-year signals beyond annual patterns
+% 2. concurrent outbreak probabilities vary widely across cities without obvious geographic gradients; survival analysis + stochastic forward simulations quantify recurrence intervals under multiple thresholds
+% 3. weave strengths here: multi-city climatic coverage, survival framework handling censoring, threshold sensitivity analysis, and forward simulations that propagate model selection uncertainty
+% Handling of multiple comparable models (uncertainty propagation)
 
-\subsection{Interpretation of Main Findings}
+We used publicly available surveillance data on two major seasonal respiratory pathogens, seasonal influenza and respiratory syncytial virus (RSV), with at least 5 years of history from eight cities in mainland China to investigate within- and between-year patterns of their disease burden.
+Time-series analysis revealed that strong within-year cycles are present for both pathogens, consistent with the established understanding that they are fundamentally seasonal respiratory infections.
+Our model selection process further revealed that introducing between-year cycles can improve model fit, as measured by AIC, for both pathogens across nearly all cities (with the exception of RSV in Wuhan).
+We then combined time-series and survival analysis to quantify the probability of concurrent influenza–RSV outbreaks and the temporal gaps until the next such event under multiple risk thresholds.
+This analysis accounted for uncertainty around our models and the intrinsic stochasticity of the underlying data generation processes.
+The durations of between-year cycles, probabilities of concurrent outbreaks, and the temporal gaps until the next concurrent outbreak all varied by city with no apparent geographic patterns.
 
-% TODO: AI - Interpret the geographic differences
-% TODO: AI - Explain the threshold effects
-% TODO: AI - Discuss the survival analysis insights
+% novelty
+% 1. survival analysis for time-to-event in this case, demonstration, and wider application to all respiratory diseases with surveillance data.
+% Why survival analysis is appropriate for this problem (right-censoring, irregular spacing)
+% 2. season level prediction for concurrent outbreaks of respiratory diseases, seasonal level prediction is similar to some climate-sensitive forecasts that maybe public health sector can learn from
+% The choice of thresholds (70th, 80th, 90th percentiles) and their public health relevance
+% Sensitivity to threshold choices
+% 3. sophisticated projection framework, it's not intended for exactly forecasting but it will help us understand the probability of catastrophic events in the future.
 
-The survival analysis approach revealed important insights into the temporal dynamics of concurrent respiratory disease outbreaks. The geographic variation in outbreak timing suggests significant environmental and population-level factors influencing multi-pathogen dynamics.
+To our best knowledge, our study is the first to quantify the probabilities of concurrent outbreaks of seasonal respiratory pathogens and the temporal gaps until the next concurrent outbreak under multiple risk thresholds.
+Most existing literature tends to focus on quantifying annual cycles.
+Only a small number of studies have quantified non-annual cycles \citep{Yang2023, Li2025RSV} or confirmed the possibility of concurrent outbreaks of multiple seasonal respiratory pathogens \citep{Pei2020, Eales2025}. 
+Therefore, a key point of novelty of our study is methodological.
+The survival analysis approach we incorporate into the predominant time-series based theoretical framework allowed us to address two key technical challenges in outbreak prediction: finite sample bias and right censoring.
+An example of finite sample bias is in a range of 10 years, concurrent outbreaks of one year apart may occur nine times although the concurrent outbreaks six years apart may only occur once. 
+In the distribution of raw temporal gaps, a strong bias towards shorter gaps would occur.
+Right censoring occurs when we have to draw an end for the analytical window although the event of interest may have not happened yet.
+Without addressing this issue, "not yet happened" may be misinterpreted as "would not happen".
+The relevance of this approach extends beyond influenza and RSV and can be broadly applicable to other respiratory diseases with continuously measured burden metrics.
 
-% TODO: AI - Add mechanistic explanations
-% TODO: AI - Discuss seasonal drivers
-% TODO: AI - Explain the threshold-specific patterns
+In this study, concurrent outbreak risks were defined as the probability of simultaneously reaching the 70th, 80th, and 90th percentiles of historical values.
+By evaluating multiple thresholds, our framework accommodates different risk tolerance levels among decision makers—from those preparing for only the most severe concurrent outbreaks (90th percentile) to those planning for more frequent but less extreme events (70th percentile)—and quantifies how these choices affect estimated probabilities and recurrence intervals.
+This design enabled us to compare disease burden measures across cities and pathogens on a relative scale.
+This relative-scale design also reflects health system context—high health system pressure in Beijing and Yunfu would not look the same and cities should be evaluated relative to their own historical baseline.
 
-\subsection{Comparison with Existing Literature}
+We used a unique approach to time-series projection while assessing the probability of concurrent outbreaks and the temporal gaps to the next concurrent outbreak, through which we propagate uncertainty from the model selection and data generation processes.
+The increase in variance further into the future is suppressed because such large noise would cloud the signal in the long run.
+Therefore, the result of our study can be interpreted as an assessment of rare events in the future given our current understanding of the underlying disease dynamics, and should not be interpreted as exact forecasting of concurrent outbreaks occurring in a specific year.
+Further, concurrent outbreak risks were assessed on the seasonal level.
+This type of prediction is similar to those of some climate-sensitive infectious diseases that have been used in public health decision making. 
+Such seasonal lens should complement real-time tools forecasting for the exact number of public health endpoints in the context of respiratory public health management.
 
-% TODO: AI - Compare with individual pathogen studies
-% TODO: AI - Discuss the novelty of the approach
-% TODO: AI - Reference similar geographic studies
+% interpretation, work existing literature in here
+% 1. annual cycles
+% 2. multi-year cycles, what might this mean?
+% Between-year cycles (~25-28 months): What does this mean epidemiologically? How does it relate to known patterns of immunity waning, antigenic drift, or demographic turnover?
+% Influenza vs RSV differences: Why is influenza less strictly annual than RSV? What does this imply about their different transmission dynamics?
+% 3. concurrent outbreaks
+% How do your findings compare to existing work on:
+% Respiratory pathogen seasonality in China
+% Multi-year cycles in respiratory diseases
+% Concurrent outbreak studies
+% Geographic variation in seasonality
 
-Our findings align with previous studies showing geographic variation in individual pathogen seasonality, while extending this understanding to concurrent multi-pathogen dynamics. The survival analysis approach provides a novel framework for characterizing outbreak timing.
+We found that RSV exhibited more strictly annual within-year cycles (i.e., exactly 12 months) than seasonal influenza, which is consistent with our existing understanding of these pathogens' epidemiology. 
+RSV shows a stronger seasonal signal because its transmission relies more heavily on susceptibles from young age groups and experiences less intense competition between subtypes. 
+While between-year cycles for RSV have been observed elsewhere in the world, those of seasonal influenza have not been widely studied.
+Here, we estimated highly variable between-year cycles by city and by pathogen, indicating that the drivers of these cycles may be complex and context-specific, potentially composed of multiple slowly varying factors such as antigenic drift, viral interference, demographic turnover, behavioral changes, and immunization history. 
+Notably, the durations of within- and between-year cycles are not directly deterministic of the probability of concurrent outbreaks or the temporal gaps to subsequent concurrent outbreaks. 
+This indicates that predicting concurrent outbreaks requires consideration of not only pathogen characteristics and epidemiology but also the underlying transmission history.
 
-% TODO: AI - Add more literature comparisons
-% TODO: AI - Discuss methodological advances
-% TODO: AI - Highlight unique contributions
+% public health implications
+% 1. seasonal level planning, health promotion and vaccination campaign
+% overwhelmed systems have worse outcomes - find a reference for this.
+% short cycles --> healthcare system is already dealing with these things, frequent opportunities to reduce disease burden
+% 7. Clinical/Epidemiological Significance (EXPAND PUBLIC HEALTH IMPLICATIONS)
+% What do the specific median intervals mean operationally? (e.g., "2-3 years" in some cities)
+% How should public health systems interpret these probabilities?
+% Threshold-dependent risk assessment
 
-\subsection{Clinical and Public Health Implications}
+Seasonal-level predictions of concurrent respiratory disease outbreaks are valuable for public health practitioners making early-season intervention decisions and for hospital system administrators seeking to prevent overcrowding and excessive strain on healthcare staff.
+Based on our estimates, communities in Xi'an, Wuhan, and Wenzhou may experience frequent concurrent outbreaks (i.e. temporal gaps to the subsequent concurrent outbreak are 2-3 years based on the strictest risk threshold) compared to other cities we investigated, and their local health systems may be better adapted to handling them.
+Our results provide evidence for the potential of further disease burden reduction if awareness of concurrent outbreaks is raised and early intervention strategies are implemented.
+In cities like Suzhou and Yunfu, however, concurrent outbreaks are less frequent (i.e. temporal gaps to the subsequent concurrent outbreak are 6-7 years based on the strictest risk threshold).
+At lower frequencies, a concurrent outbreak may affect the community more severely, as baseline health systems are less prepared for such events.
+In these cities, seasonal-level concurrent outbreak predictions may be particularly useful when integrated with other real-time forecasting tools.
+Decisions may need to balance the trade-off between lower frequency and potentially larger negative impact.
 
-% TODO: AI - Discuss resource allocation implications
-% TODO: AI - Explain preparedness planning
-% TODO: AI - Address healthcare system impacts
+% Limitations
+% 1. Only eight cities that meet inclusion criteria and we only included two pathogens. New testing products may help us understand more.
+% 2. Incorporating more data sources, e.g. pathogen level data
+% 3. while we discussed the presence of these cycles, we did not investigate the underlying mechanisms, which could help us improve the quality of forecast.
+% 4. we didn't test longer cycles given the length of our time series
 
-The geographic and temporal patterns identified have important implications for public health preparedness. Understanding the timing and frequency of concurrent outbreaks can inform resource allocation and intervention strategies.
+There are, however, limitations to our study.
+First, we limited our analysis to influenza and RSV data from eight cities in mainland China.
+Our approach requires high-resolution surveillance data (i.e., city level) with long histories due to the nature of our analytical framework, which constrains the number of locations where this analysis can currently be applied.
+As new testing products that cover more pathogens become available, our approach will be applicable in more locations.
+While the approach we propose is broadly generalisable, the specific results are not.
+The cities we investigated are located in subtropical and temperate climates, where within-year cycles are strong for both influenza and RSV.
+This would not be the case in tropical regions, where seasonal patterns may be less pronounced or absent.
+Second, we used only one measure of disease burden per city and per pathogen.
+In practice, multiple measures of disease burden may be available (e.g., hospitalisations, deaths, outpatient visits, test positivity rates, etc.).
+Pooling all available information could improve our understanding of the underlying cycles and enhance prediction accuracy, but such harmonization would require careful consideration of the underlying surveillance systems and their biases.
+Third, while we tested the predictive power of within- and between-year cycles, the underlying mechanisms driving these cycles warrant further investigation.
+Finally, the longest between-year cycle we tested was 36 months, constrained by the available time-series data.
+Longer-term data made possible by electronic health systems may allow us to test for even longer cycles in the future.
 
-% TODO: AI - Add specific recommendations
-% TODO: AI - Discuss policy implications
-% TODO: AI - Address healthcare capacity planning
-
-\subsection{Limitations and Future Directions}
-
-% TODO: AI - Discuss simulation limitations
-% TODO: AI - Address generalizability concerns
-% TODO: AI - Suggest future research directions
-
-Several limitations should be considered when interpreting these results. The simulation-based approach, while providing controlled conditions, may not fully capture the complexity of real-world respiratory disease dynamics.
-
-% TODO: AI - Add more limitations
-% TODO: AI - Discuss validation needs
-% TODO: AI - Suggest methodological improvements
+% Future
+% 1. validation with prospective data
+% 2. integrating into other real-time systems
+% The forward simulation approach vs. true forecasting
+% 3. what can we say if no concurrent outbreaks have happened for a while?
+Future research should explore several directions to enhance the practical utility of seasonal-level concurrent outbreak predictions.
+First, integration with real-time forecasting tools would provide more comprehensive situational awareness for public health decision-making.
+This integration would require incorporating real-time data streams, which introduce technical challenges such as backfilling and data quality control.
+Since concurrent outbreak risks are essentially a time-to-event problem, real-time systems would need to dynamically update predictions based on recent transmission history.
+For example, predictions should be adjusted when no concurrent outbreaks have occurred for an extended period (e.g. two years), reflecting the changing conditional probability as time since the last event increases.
+Second, prospective validation of our forward simulation approach against observed concurrent outbreaks would strengthen confidence in these predictions and help distinguish between the probabilistic assessments we provide and true point forecasts.
+Third, incorporating additional data sources could improve prediction accuracy. These might include information about antagonistic or synergistic relationships between circulating pathogens (such as viral interference effects), changes in population immunity from vaccination campaigns, and shifts in pathogen antigenic characteristics that may influence the probability and timing of concurrent activity.
+Fourth, extending this framework to other combinations of co-circulating respiratory pathogens beyond influenza and RSV would test the generalisability of the approach and potentially reveal whether predictable patterns of concurrent circulation exist across broader pathogen communities.
 
 
 
