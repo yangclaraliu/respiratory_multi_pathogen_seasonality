@@ -11,7 +11,7 @@
 
 We compared the performance of the models only adjusted for within-year cycles against the models adjusted for both within- and between-year cycles using AIC values (\hyperref[fig:fig2]{Figure 2}). 
 AIC values combine model fit (log-likelihood) with complexity penalties, and therefore the scales depend on both data characteristics and model structure.
-Therefore, AIC values comparisons are only meaningful if the underlying data set remains the same (i.e. the same city and pathogen combination).
+Therefore, AIC value comparisons are only meaningful if the underlying data set remains the same (i.e. the same city and pathogen combination).
 Lower AIC values indicate better model performance.
 In nearly all pathogen, city, and within-year cycle length combinations, some models adjusted for both within- and between-year cycles performed better than the models only adjusted for within-year cycles after penalising for increased degrees of freedom.
 The only exceptions were RSV in Wuhan - models with only annual cycles performed better than all other models tested.
@@ -34,12 +34,12 @@ The full list detailing the number of comparable models by city and pathogen is 
 \end{figure}
 
 The optimal within-year cycle lengths and between-year cycle lengths for each city and pathogen combination are presented in \hyperref[fig:fig3]{Figure 3} (A) and (B).
-These results only reflected the optimal models - their comparable models are not included.
+These results reflected only the optimal models—their comparable models are not included.
 Similar to the results presented in \hyperref[fig:fig2]{Figure 2}, most within-year cycles were approximately 12 months for RSV and were not strictly annual for seasonal influenza.
 The between-year cycles selected for the optimal models were much more variable.
 These results are not strongly associated with the length of the time series (\hyperref[fig:fig3]{Figure 3}(C)) or their temporal resolution (\hyperref[fig:fig3]{Figure 3}(D)).
 Looking across all optimal and their comparable models, the between-year cycles for influenza had a mean of 28 months in the North and 27 months in the South; those for RSV had a median of 25 months in the North and 28 months in the South (\hyperref[fig:fig3]{Figure 3}(E)). 
-These differences are not statistically significant by region for either pathogen likely due to small sample size and thus limited statistical power.
+These differences are not statistically significant by region for either pathogen, likely because of small sample size and thus limited statistical power.
 The between-year cycles were highly variable (i.e. IQR > 6 months) for Suzhou (influenza), Wuhan (RSV) and Guangzhou (RSV) (see Supplementary Material Figure S1). 
 
 \begin{figure}[H]
@@ -51,7 +51,7 @@ The between-year cycles were highly variable (i.e. IQR > 6 months) for Suzhou (i
 
 Forward projection not only reflects the within- and between-year cycles we estimated, but also the underlying city-specific epidemic histories. 
 Using both optimal and comparable models, we demonstrate that there are non-negligible risks of concurrent outbreaks of influenza and RSV in the cities we investigated (\hyperref[fig:fig4]{Figure 4}).
-Using the most strict risk threshold (joint top 10 percentile, i.e. simultaneously observing influenza and RSV exceeding the 90th percentile of the city's respective observed history)), Wenzhou was projected to experience the most frequent concurrent outbreaks (i.e. 25\% of years projected), followed by Xi'an and Wuhan (15\% of years projected).
+Using the strictest risk threshold (joint top 10 percentile, i.e. simultaneously observing influenza and RSV exceeding the 90th percentile of the city's respective observed history)), Wenzhou was projected to experience the most frequent concurrent outbreaks (i.e. 25\% of years projected), followed by Xi'an and Wuhan (15\% of years projected).
 Beijing and Lanzhou were projected to not experience any concurrent outbreaks given this strict risk threshold.
 Under less strict thresholds, we found that the ranking by frequency remains consistent.
 When concurrent outbreak was defined by joint top 20 percentile (i.e. simultaneously observing influenza and RSV exceeding the 80th percentile of the city's respective observed history), Beijing and Lanzhou were expected to observe some concurrent outbreaks (i.e. 10\% and 5.9\% of years projected, respectively).

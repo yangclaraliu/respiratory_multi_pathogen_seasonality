@@ -63,7 +63,7 @@ We further used MSTL (Multiple Seasonal-Trend decomposition using LOESS), which 
 With MSTL, the original time-series were decomposed into four components: within-year patterns, between-year patterns, long-term trends, and residuals.
 We assumed the within-year cycle lengths to be between 10 and 14 months and between-year cycle lengths to be between 18 and 36 months. 
 The upper limit of the between-year cycle lengths was further constrained by the total lengths of the series. 
-For time series that do not include at least two full cycles of a given period length, MSTL does not test that between-year cycle length, as this is a requirement of the MSTL algorithm. 
+For time series that do not contain at least two full cycles of a given period length, MSTL does not test that between-year cycle length, as this is a requirement of the MSTL algorithm. 
 Model selection was performed using Akaike Information Criterion (AIC). 
 The optimal model for each city-pathogen combination was defined as having the minimum AIC value. 
 Following standard practice, we considered models with $\Delta$AIC $< 7$ (where $\Delta$AIC $= $ AIC$_i$ $-$ AIC$_{\text{min}}$) as having comparable empirical support. 
@@ -73,7 +73,7 @@ If the latter is lower, then we conclude that between-year patterns play a role 
 Bayesian Information Criterion (BIC) was also examined as a sensitivity analysis.
 
 \subsection{Forward simulations of outbreaks and concurrent outbreak identification}
-In order to assess the implication of within- and between-year patterns on future disease burden, we performed forward simulations based on observed disease burden history and the optimal models derived using the methods above.
+To assess the implications of within- and between-year patterns on future disease burden, we performed forward simulations based on observed disease burden history and the optimal and their comparable models derived using the methods above.
 These forward simulations were performed for long timeframes to ensure that within- and between-year patterns estimated using different time-series may be overlaid for a given city.
 Within- and between-year patterns were simply repeated in these forward simulations.
 Trend and residual components of the optimal models were fitted to an Auto-Regressive Integrated Moving Average (ARIMA) model. 
@@ -96,7 +96,7 @@ It also introduces right-censoring issues when no concurrent outbreak or only on
 To address these issues, we reframed the interval detection as a time-to-event problem, and estimated the inter-concurrent outbreak intervals using Kaplan-Meier survival analysis, with left truncation and right-censoring.
 The survival curve was fitted for each city at all three different concurrent outbreak thresholds defined above.
 With this setup, we can calculate inter-concurrent outbreak intervals.
-In the context of this study, we used the time by which 50\% of the forward simulation paths ($1000 \times n$ models) are expected to experience their next concurrent outbreak event as the inter-concurrent outbreak interval. 
+In the context of this study, we used the time by which 50\% of the forward simulation paths ($1000 \times n$ models) are expected to experience their subsequent concurrent outbreak event as the inter-concurrent outbreak interval. 
 
 \subsection{Software and code availability}
 All aforementioned methods and analyses were implemented in R (v4.2.2) using the following \texttt{package}s: \texttt{forecast}, \texttt{mstl}, and \texttt{survival}. All codes are available on the GitHub repository: \url{https://github.com/yangclaraliu/respiratory_multi_pathogen_seasonality}.

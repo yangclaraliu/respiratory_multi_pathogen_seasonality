@@ -10,9 +10,9 @@
 We used publicly available surveillance data on two major seasonal respiratory pathogens, seasonal influenza and respiratory syncytial virus (RSV), with at least 5 years of history from eight cities in mainland China to investigate within- and between-year patterns of their disease burden.
 Time-series analysis revealed that strong within-year cycles are present for both pathogens, consistent with the established understanding that they are fundamentally seasonal respiratory infections.
 Our model selection process further revealed that introducing between-year cycles can improve model fit, as measured by AIC, for both pathogens across nearly all cities (with the exception of RSV in Wuhan).
-We then combined time-series and survival analysis to quantify the probability of concurrent influenza–RSV outbreaks and the temporal gaps until the next such event under multiple risk thresholds.
+We then combined time-series and survival analysis to quantify the probability of concurrent influenza–RSV outbreaks and the temporal gaps until the subsequent event of such nature under multiple risk thresholds.
 This analysis accounted for uncertainty around our models and the intrinsic stochasticity of the underlying data generation processes.
-The durations of between-year cycles, probabilities of concurrent outbreaks, and the temporal gaps until the next concurrent outbreak all varied by city with no apparent geographic patterns.
+The durations of between-year cycles, probabilities of concurrent outbreaks, and the temporal gaps until the subsequent concurrent outbreak all varied by city with no apparent geographic patterns.
 
 % novelty
 % 1. survival analysis for time-to-event in this case, demonstration, and wider application to all respiratory diseases with surveillance data.
@@ -22,14 +22,14 @@ The durations of between-year cycles, probabilities of concurrent outbreaks, and
 % Sensitivity to threshold choices
 % 3. sophisticated projection framework, it's not intended for exactly forecasting but it will help us understand the probability of catastrophic events in the future.
 
-To our best knowledge, our study is the first to quantify the probabilities of concurrent outbreaks of seasonal respiratory pathogens and the temporal gaps until the next concurrent outbreak under multiple risk thresholds.
+To our best knowledge, our study is the first to quantify the probabilities of concurrent outbreaks of seasonal respiratory pathogens and the temporal gaps until the subsequent concurrent outbreak under multiple risk thresholds.
 Most existing literature tends to focus on quantifying annual cycles.
 Only a small number of studies have quantified non-annual cycles \citep{Yang2023, Li2025RSV} or confirmed the possibility of concurrent outbreaks of multiple seasonal respiratory pathogens \citep{Pei2020, Eales2025}. 
 Therefore, a key point of novelty of our study is methodological.
-The survival analysis approach we incorporate into the predominant time-series based theoretical framework allowed us to address two key technical challenges in outbreak prediction: finite sample bias and right censoring.
-An example of finite sample bias is in a range of 10 years, concurrent outbreaks of one year apart may occur nine times although the concurrent outbreaks six years apart may only occur once. 
+The survival analysis approach we incorporate into the predominant time-series-based theoretical framework allowed us to address two key technical challenges in outbreak prediction: finite sample bias and right censoring.
+An example of finite sample bias is that over a 10-year period, concurrent outbreaks one year apart may occur nine times, whereas concurrent outbreaks six years apart may only occur once. 
 In the distribution of raw temporal gaps, a strong bias towards shorter gaps would occur.
-Right censoring occurs when we have to draw an end for the analytical window although the event of interest may have not happened yet.
+Right censoring occurs when we have to draw an end for the analytical window although the event of interest may not have happened yet.
 Without addressing this issue, "not yet happened" may be misinterpreted as "would not happen".
 The relevance of this approach extends beyond influenza and RSV and can be broadly applicable to other respiratory diseases with continuously measured burden metrics.
 
@@ -38,12 +38,12 @@ By evaluating multiple thresholds, our framework accommodates different risk tol
 This design enabled us to compare disease burden measures across cities and pathogens on a relative scale.
 This relative-scale design also reflects health system context—high health system pressure in Beijing and Yunfu would not look the same and cities should be evaluated relative to their own historical baseline.
 
-We used a unique approach to time-series projection while assessing the probability of concurrent outbreaks and the temporal gaps to the next concurrent outbreak, through which we propagate uncertainty from the model selection and data generation processes.
+We used a unique approach to time-series projection while assessing the probability of concurrent outbreaks and the temporal gaps to the subsequent concurrent outbreak, through which we propagate uncertainty from the model selection and data generation processes.
 The increase in variance further into the future is suppressed because such large noise would cloud the signal in the long run.
 Therefore, the result of our study can be interpreted as an assessment of rare events in the future given our current understanding of the underlying disease dynamics, and should not be interpreted as exact forecasting of concurrent outbreaks occurring in a specific year.
 Further, concurrent outbreak risks were assessed on the seasonal level.
-This type of prediction is similar to those of some climate-sensitive infectious diseases that have been used in public health decision making. 
-Such seasonal lens should complement real-time tools forecasting for the exact number of public health endpoints in the context of respiratory public health management.
+This type of prediction is similar to those of some climate-sensitive infectious diseases that have been used in public health decision-making. 
+Such a seasonal lens should complement real-time tools forecasting for the exact number of public health endpoints in the context of respiratory public health management.
 
 % interpretation, work existing literature in here
 % 1. annual cycles
@@ -60,7 +60,7 @@ Such seasonal lens should complement real-time tools forecasting for the exact n
 We found that RSV exhibited more strictly annual within-year cycles (i.e., exactly 12 months) than seasonal influenza, which is consistent with our existing understanding of these pathogens' epidemiology. 
 RSV shows a stronger seasonal signal because its transmission relies more heavily on susceptibles from young age groups and experiences less intense competition between subtypes. 
 While between-year cycles for RSV have been observed elsewhere in the world, those of seasonal influenza have not been widely studied.
-Here, we estimated highly variable between-year cycles by city and by pathogen, indicating that the drivers of these cycles may be complex and context-specific, potentially composed of multiple slowly varying factors such as antigenic drift, viral interference, demographic turnover, behavioral changes, and immunization history. 
+Here, we estimated highly variable between-year cycles by city and by pathogen, indicating that the drivers of these cycles may be complex and context-specific, potentially composed of multiple slowly varying factors such as antigenic drift, viral interference, demographic turnover, behavioural changes, and immunisation history. 
 Notably, the durations of within- and between-year cycles are not directly deterministic of the probability of concurrent outbreaks or the temporal gaps to subsequent concurrent outbreaks. 
 This indicates that predicting concurrent outbreaks requires consideration of not only pathogen characteristics and epidemiology but also the underlying transmission history.
 
