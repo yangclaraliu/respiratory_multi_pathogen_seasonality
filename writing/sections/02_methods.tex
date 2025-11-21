@@ -6,27 +6,54 @@
 % in here, please mention that all data was log-transformed before modelling, and mention what we did for 0 values
 
 \subsection{Data Sources and Data Preprocessing}
+We collected long-term surveillance data (>= five years) of seasonal influenza and RSV at the city level in mainland China with a temporal resolution of month or finer from published literature.
+Since it is a requirement for our analysis that influenza and RSV data be simultaneously available for a given city, and that the historical surveillance infrastructure has been more complete for influenza than RSV in the context of mainland China, we started out to identify data sources on RSV disease burden first.
+% TODO: replace $X$ with the actual number of datasets found. @Kemin-Zhu
+A recent study by Guo et al. (2024) provided a comprehensive review of the literature on RSV disease burden in mainland China.
+Among the studies they identified, we found $X$ datasets to meet our criteria of (1) >= five years of data; (2) monthly or finer temporal resolution; (3) city level or finer geographic resolution.
+These datasets were then supplemented with a broader search of the literature through PubMed.
+Search terms we used are included in the Supplementary Material Table S1.
 
+This process has helped us identify eight cities to focus on for our search for influenza burden data: Beijing (provincial level city), Lanzhou (Gansu province), Xi'an (Shaanxi province), Wuhan (Hubei province), Suzhou (Jiangsu province), Wenzhou (Zhejiang province), Guangzhou (Guangdong province), and Yunfu (Guangdong province).
+Of these cities, Beijing, Lanzhou, and Xi'an are located in the northern part of mainland China, and the rest are located in the southern part.
+We then searched for influenza burden data in these same eight cities using the same set of search terms in PubMed, replacing the search term "RSV" with "Influenza"; the search term "China" with the specific city names.
+% TODO: replace $XXXX$ with the actual method used to digitise the data. @Kemin-Zhu
+Data embedded in figures were digitised using $XXXX$.
+
+The specific metric describing the disease burden of influenza and RSV varied by city and by pathogen (Figure \ref{fig:data_selection}).
+However, their relative changes provided the key information describing the within- and between-year patterns.
+There was a mix of in- and out-patient settings.
+Of all city and pathogen combinations, seasonal influenza in Xi'an is the only situation where diagnostics were syndromic only.
+All other disease burden metrics were confirmed by laboratory diagnostics.
+More details of the disease burden metrics are presented in the Supplementary Methods Section 1.
+
+Due to the non-negative nature of disease burden metrics, we transformed raw values by taking the natural logarithm before further analysis.
+Zeros were replaced with a small constant.
+All analyses were conducted on the datasets' original time scale (e.g. with weekly data, we tested if within-year cycle length was approximately 52 weeks).
+Results were converted to a monthly scale only for comparison and interpretation purposes.
+
+% A wide range of surveillance indicators may exist for influenza and RSV disease burden
+% More details of the time series selection process can be found in the Supplementary Material Table S1.
 % NOTE: Full terms and abbreviations for RSV and InfV are given here.
 % We can review and adjust the placement of first-use definitions after the manuscript is complete.
-\subsection{Data Sources and Data Preprocessing}
 
-We assembled historical surveillance time series of respiratory syncytial virus (RSV) and influenza virus (InfV) at the city-level  in mainland China.
-Eligible datasets spanned at least five consecutive years with monthly or finer temporal resolution.
+% We assembled historical surveillance time series of respiratory syncytial virus (RSV) and influenza virus (InfV) at the city-level  in mainland China.
+% Eligible datasets spanned at least five consecutive years with monthly or finer temporal resolution.
 
-RSV data were identified through a structured PubMed search supplemented by a systematic review, with details provided in Supplementary Text~1.
-The same search strategy was applied to influenza, and for each city we retained the longest and most clearly defined virological series.
-The eight included cities were Beijing, Lanzhou, Xi’an, Wuhan, Suzhou, Wenzhou, Guangzhou, and Yunfu.
-Although surveillance indicators varied across systems, all represent pathogen-specific respiratory disease activity; definitions are summarised in Supplementary Table~S1.
+% RSV data were identified through a structured PubMed search supplemented by a systematic review, with details provided in Supplementary Text~1.
+% The same search strategy was applied to influenza, and for each city we retained the longest and most clearly defined virological series.
+% The eight included cities were Beijing, Lanzhou, Xi’an, Wuhan, Suzhou, Wenzhou, Guangzhou, and Yunfu.
+% Although surveillance indicators varied across systems, all represent pathogen-specific respiratory disease activity; definitions are summarised in Supplementary Table~S1.
 
-All datasets were harmonised into time-series objects at their native reporting frequency.
-Rare zero counts were replaced with 1 before log transformation.
-Case counts were transformed using the natural logarithm, and percentage positivity values were converted to 0–1 fractions prior to log transformation.
-These steps stabilised variance and placed all outcomes on a comparable log-intensity scale.
+% All datasets were harmonised into time-series objects at their native reporting frequency.
+% YL: this is not even true.
+% Rare zero counts were replaced with 1 before log transformation.
+% Case counts were transformed using the natural logarithm, and percentage positivity values were converted to 0–1 fractions prior to log transformation.
+% These steps stabilised variance and placed all outcomes on a comparable log-intensity scale.
 
-To allow comparison of seasonal periodicities across datasets, estimated cycle lengths were converted into a common monthly unit.
-Daily estimates were divided by 30, weekly estimates by 4, and monthly estimates retained.
-The resulting standardised metrics (\textit{step_size_standardised}, \textit{step_size1_standardised}, \textit{step_size2_standardised}) were used for subsequent model evaluation and analyses of concurrent outbreak intervals.
+% To allow comparison of seasonal periodicities across datasets, estimated cycle lengths were converted into a common monthly unit.
+% Daily estimates were divided by 30, weekly estimates by 4, and monthly estimates retained.
+% The resulting standardised metrics (\texttt{step\_size\_standardised}, \texttt{step\_size1\_standardised}, \texttt{step\_size2\_standardised}) were used for subsequent model evaluation and analyses of concurrent outbreak intervals.
 
 \begin{figure}[htbp]
   \centering

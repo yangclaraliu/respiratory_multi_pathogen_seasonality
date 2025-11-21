@@ -15,12 +15,11 @@ writing/
 │   ├── 04_discussion.tex
 │   ├── 05_conclusions.tex
 │   └── 06_acknowledgments.tex
-├── figures/              # Figure files (.pdf, .png)
-├── tables/               # Table files (if needed)
 ├── bib/                  # Bibliography
-│   └── references.bib
+│   ├── references.bib
+│   └── ref_to_screen.bib
 ├── supp/                 # Supplementary materials
-├── build/                # Build artifacts (gitignored)
+├── build/                # Build artifacts (PDFs tracked for sharing)
 └── .latexmkrc           # LaTeX compilation configuration
 ```
 
@@ -28,83 +27,30 @@ writing/
 
 ### Compile the manuscript:
 
-**Option 1: Using pdflatex (manual)**
+The current workflow uses `texcount` for word counting and `pdflatex` for compilation. The compilation script automatically:
+1. Counts words in each section
+2. Updates word counts in section headers
+3. Compiles the PDF
+4. Copies the final PDF to `build/main.pdf`
+
+**To compile:**
 ```bash
 cd writing
-pdflatex main.tex
-bibtex main
-pdflatex main.tex
-pdflatex main.tex
+texcount -1 -sum -q sections/01_introduction.tex > build/introduction_wc.tmp && \
+texcount -1 -sum -q sections/02_methods.tex > build/methods_wc.tmp && \
+texcount -1 -sum -q sections/03_results.tex > build/results_wc.tmp && \
+texcount -1 -sum -q sections/04_discussion.tex > build/discussion_wc.tmp && \
+pdflatex -interaction=nonstopmode main.tex && \
+cp main.pdf build/main.pdf
 ```
 
-**Option 2: Using latexmk (automatic, recommended)**
+**Alternative: Using latexmk (for full builds with bibliography)**
 ```bash
 cd writing
 latexmk -pdf main.tex
 ```
 
-This will automatically handle all compilation steps and create `build/main.pdf`.
-
-### Clean build artifacts:
-```bash
-latexmk -c
-```
-
-## 📝 Writing Workflow
-
-### For AI-Assisted Writing:
-
-1. **One topic per file**: Each section file focuses on a single topic
-2. **TODO comments**: Use `% TODO: AI - [task]` for AI assistance
-3. **Incremental edits**: Edit one section at a time for better version control
-4. **Short sentences**: Keep sentences concise for easier AI parsing and collaboration
-
-### Editing Sections:
-
-- To edit the **introduction**: Open `sections/01_introduction.tex`
-- To edit the **methods**: Open `sections/02_methods.tex`
-- And so on...
-
-Changes are automatically included when you compile `main.tex`.
-
-## 🤝 Collaboration
-
-### Using Git (recommended):
-
-1. **Edit your section** in `sections/`
-2. **Stage changes**: `git add sections/01_introduction.tex`
-3. **Commit with message**: `git commit -m "Added X to introduction"`
-4. **Push to GitHub**: `git push`
-5. **Collaborator reviews** changes via pull request
-
-### Using Overleaf:
-
-You can sync this repository with Overleaf:
-1. In Overleaf: New Project → Import from GitHub
-2. Select this repository
-3. Overleaf will sync with the `writing/` folder
-4. Changes push back to GitHub automatically
-
-### Track Changes:
-
-- **Git**: Use `git diff` to see changes
-- **Cursor AI Chat**: Ask AI to review changes
-- **Overleaf**: Built-in track changes feature available
-
-## 📊 Adding Figures
-
-1. Place figure files in `figures/`
-2. Use vector formats (.pdf) when possible
-3. Reference in sections like:
-
-```latex
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.8\textwidth]{figures/fig7_survival.pdf}
-\caption{Your caption here}
-\label{fig:survival}
-\end{figure}
-```
+**Note**: PDFs in `build/` are tracked in git for easy sharing with collaborators. Other build artifacts (`.aux`, `.log`, etc.) are ignored.
 
 ## 📚 Adding References
 
@@ -132,8 +78,9 @@ You can sync this repository with Overleaf:
 ## 🔧 Requirements
 
 - TeX Live 2024 or later
-- Required packages: elsarticle, natbib, amsmath, graphicx, booktabs
-- Optional: latexmk (for automatic compilation)
+- Required packages: elsarticle, natbib, amsmath, graphicx, booktabs, siunitx, lineno
+- `texcount` (for word counting - usually included with TeX Live)
+- Optional: latexmk (for full builds with bibliography)
 
 ## 📧 Contact
 

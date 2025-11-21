@@ -1,0 +1,7 @@
+# Ignore all build artifacts except PDFs (for sharing with collaborators)
+*
+!.gitignore
+!*.pdf
+
+
+

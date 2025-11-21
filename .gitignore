@@ -51,8 +51,17 @@ rsconnect/
 *.qs
 *.rds
 
-# LaTeX build artifacts
-build/
+# macOS files
+.DS_Store
+**/.DS_Store
+
+# LaTeX build artifacts (but allow PDFs in build/ for sharing)
+writing/build/*
+!writing/build/*.pdf
+!writing/build/.gitignore
+# Ignore PDFs and other artifacts in writing/ root (only track in build/)
+writing/*.pdf
+writing/*.spl
 *.aux
 *.bbl
 *.bcf
