@@ -6,56 +6,75 @@
 % 4. what are we doing to address this gap.
 
 \section{Introduction (\introductionwordcount~words)}
+% background information on respiratory pathogens 
+Influenza viruses and respiratory syncytial virus (RSV) are respiratory pathogens that impose a large disease burden worldwide, causing millions of infections and substantial morbidity and mortality, including hundreds of thousands of deaths each year.
+In many temperate and some subtropical regions, the disease burden associated with these pathogens exhibits strong within-year cyclical patterns, often peaking in winter or cooler months.
+Such within-year patterns may be driven by environmental and climatic factors (e.g. temperature and humidity), human behaviours (e.g. school terms, holiday travel, and indoor crowding), and immune dynamics (e.g. waning or boosting of population immunity).
+These within-year patterns are varies by region and pathogen.
+Between-year cyclicalpatterns may also occur, driven by changes in circulating pathogens (e.g., antigenic drift, antagonistic or synergistic interactions), demographics (e.g., population turnover), environmental and climatic patterns (e.g., El Niño/La Niña), immune dynamics (e.g., waning immunity), and behaviours (e.g., more risk-averse behaviors following large outbreaks).
 
-Seasonal respiratory pathogens, notably influenza viruses and respiratory syncytial virus (RSV), continue to impose a sizeable and recurrent burden on population health and health systems.  
-Globally, seasonal influenza causes an estimated 3--5 million cases of severe illness and 290{,}000--650{,}000 respiratory deaths each year \cite{WHO_SeasonalInfluenza,Paget2019_GLaMOR}, underscoring the persistent magnitude of wintertime surges even in the vaccine era.  
-Beyond influenza, RSV is increasingly recognised as a major contributor to hospitalisations among both infants and older adults worldwide, accounting for approximately 5.2 million lower–respiratory–tract infections and nearly half a million hospitalisations among adults aged 60~years or older in 2019 \cite{Li2022_RSV_Lancet,Burkart2025_RSV_GBD}.  
-These seasonal recurrences—while familiar—are far from uniform: their intensity, timing, and composition vary across years and regions, complicating preparedness and response.  
+%graveyard
+% Seasonal respiratory pathogens such as seasonal influenza viruses and respiratory syncytial virus (RSV) lead to a large disease burden worldwide.  
+% Globally, seasonal influenza causes an estimated 3--5 million cases of severe illness and \numfmt{290000}--\numfmt{650000} respiratory deaths each year \cite{WHO_SeasonalInfluenza,Paget2019_GLaMOR}, underscoring the persistent magnitude of wintertime surges even in the vaccine era.  
+% Beyond influenza, RSV is increasingly recognised as a major contributor to hospitalisations among both infants and older adults worldwide, accounting for approximately 5.2 million lower–respiratory–tract infections and nearly half a million hospitalisations among adults aged 60~years or older in 2019 \cite{Li2022_RSV_Lancet,Burkart2025_RSV_GBD}.  
+% These seasonal recurrences—while familiar—are far from uniform: their intensity, timing, and composition vary across years and regions, complicating preparedness and response.  
+% The temporal dynamics of these pathogens operate across at least two interacting scales.  
+% Within–year (\emph{seasonal}) cycles reflect climatic forcing, behavioural regularities, and the accumulation and waning of population immunity over a typical 10--14~month horizon; between–year (\emph{interannual}) modulations arise from slower processes such as antigenic drift, demographic turnover, and multi–season environmental variability \cite{BloomFeshbach2013_PLoSOne,Lowen2014_JVI,Chen2021_TempInfluenza_China}.
+% Laboratory and field studies have linked low temperatures and moderate humidity to enhanced viral survival and transmission, while school terms, holiday travel, and indoor crowding add social structuring to seasonal risk \cite{Susswein2023_eLife_mobility,Ewing2017_JID_WinterHolidays}.  
 
-The temporal dynamics of these pathogens operate across at least two interacting scales.  
-Within–year (\emph{seasonal}) cycles reflect climatic forcing, behavioural regularities, and the accumulation and waning of population immunity over a typical 10--14~month horizon; between–year (\emph{interannual}) modulations arise from slower processes such as antigenic drift, demographic turnover, and multi–season environmental variability \cite{BloomFeshbach2013_PLoSOne,Lowen2014_JVI,Chen2021_TempInfluenza_China}.  
-Laboratory and field studies have linked low temperatures and moderate humidity to enhanced viral survival and transmission, while school terms, holiday travel, and indoor crowding add social structuring to seasonal risk \cite{Susswein2023_eLife_mobility,Ewing2017_JID_WinterHolidays}.  
-Although single–season models capture much of the within–year signal for a given pathogen, they are not designed to resolve multi–periodicity or to quantify how interannual variability reshapes the sequence and spacing of large winter epidemics across successive years.  
+% concurrent outbreaks + public health implications
+Where within- and between-year patterns play a role, the circulation of seasoanl respiratory pathogens may peak concurrently.
+Such concurrent outbreaks of seasonal respiratory pathogens have been observed in many health systems, such as in Europe, the United States, and China, most of which involve both the influenza virus and RSV.
+These concurrent outbreaks pose substantial challenges to public health systems, as they can lead to increased demand for health services, and can consequently disrupt the timeliness of vaccination and other preventive measures.
+Therefore, to better support health systems' preparation for "winter pressures", it is crucial to understand the risk of concurrent respiratory disease outbreaks.
+In this study, we address this knowledge gap by quantifying the probability and interval to the next concurrent outbreak of seasonal influenza and RSV.
 
-When multiple pathogens co–circulate, the epidemiological problem extends from single–pathogen timing to the risk of concurrent outbreaks.  
-Concurrent activity can escalate operational pressures by overloading outpatient, emergency, and inpatient services and by disrupting the timing of vaccination, prophylaxis, and other preventive measures when these interventions are scheduled around pathogen–specific calendars \cite{Wang2023_CoCirculation_Zoonoses,Tam2022_CoCirculation_CCDCW}.  
-Recent experiences have also highlighted "tripledemic"–like episodes in which influenza, RSV, and SARS-CoV-2 surge concurrently, further intensifying the operational strain on health systems \cite{Mandavilli2022_Tripledemic_NYTimes,Luo2023_Tripledemic_USA,Patel2024_Tripledemic_PublicHealthSystems}.  
-During the 2023–24 winter in China and across the Northern Hemisphere, national bulletins and media reports documented simultaneous increases in influenza, RSV, and human metapneumovirus activity, which together strained paediatric and acute–care resources despite the absence of a novel pathogen \cite{ChinaCDCWeekly2024,WHORespiratory2024}.  
-Because concurrent peaks need not be synchronised every year, health systems benefit from framing the issue in terms of the \emph{probability and interval} of joint events rather than assuming fixed seasonal calendars.
+% When multiple pathogens co–circulate, the epidemiological problem extends from single–pathogen timing to the risk of concurrent outbreaks.  
+% Concurrent activity can escalate operational pressures by overloading outpatient, emergency, and inpatient services and by disrupting the timing of vaccination, prophylaxis, and other preventive measures when these interventions are scheduled around pathogen–specific calendars \cite{Wang2023_CoCirculation_Zoonoses,Tam2022_CoCirculation_CCDCW}.  
+% During the 2023–24 winter in China and across the Northern Hemisphere, national bulletins and media reports documented simultaneous increases in influenza, RSV, and human metapneumovirus activity, which together strained paediatric and acute–care resources despite the absence of a novel pathogen \cite{ChinaCDCWeekly2024,WHORespiratory2024}.  
+% Recent experiences have also highlighted "tripledemic"–like episodes in which influenza, RSV, and SARS-CoV-2 surge concurrently, further intensifying the operational strain on health systems \cite{Mandavilli2022_Tripledemic_NYTimes,Luo2023_Tripledemic_USA,Patel2024_Tripledemic_PublicHealthSystems}.
+% Because concurrent peaks need not be synchronised every year, health systems benefit from framing the issue in terms of the \emph{probability and interval} of joint events rather than assuming fixed seasonal calendars.
 
-Geography further modulates these risks.  
-In China, the Qinling–Huaihe line delineates two broad climatic regimes reflected in respiratory seasonality: northern cities tend to exhibit sharp, winter–concentrated epidemics, whereas southern cities often show extended or multi–modal activity across the cooler months \cite{Zhu2023_SpatialTimingInfluenza_China,Chen2024_IDM_InfluenzaForecasting}.  
-Post–pandemic disruptions have added complexity, with shifts in timing and multiple waves within a single year documented by national surveillance summaries \cite{ChinaCDCWeekly2024}.  
-These spatial contrasts and temporal instabilities highlight the need to consider interannual modulation explicitly when assessing the likelihood of concurrent outbreaks.  
+% data challenges so far, which is why we are doing what we are doing here.
+By far, most relevant research has focused on deriving and understanding the within-year patterns of seasonal respiratory pathogens.
+The between-year patterns, however, have rarely been considered due to data constraints.
+Such analysis requires long-term surveillance data at fine resolution to be simultaneously available for multiple pathogens.
+Coarse data resolution, such as provincial level aggregate data, often masks spatial variations in both within- and between-year patterns, and thus dampens out the potential signal for concurrent outbreaks.
+Furthermore, the statistical validity of the role played by between-year patterns needs to be validated by multiple datasets, which requires the type of data we mentioned above, which is already rare, needs to be available for multiple locations.
+In this study, we put together a dataset describing the burden of seasonal influenza and RSV for eight cities in mainland China to address these key data challenges.
 
-Despite extensive work on single–pathogen seasonality, two methodological limitations constrain preparedness for concurrent outbreaks.  
-First, most analytical frameworks target only one dominant seasonal period per pathogen (e.g., classical STL decomposition or fixed–period harmonic regression), under–fitting multi–periodic signals and mischaracterising residual dependence relevant to aggregated risk across seasons.  
-Second, joint–outbreak events are rarely analysed within a formal time–to–event framework that can accommodate right–censoring and irregular spacing.  
-These gaps are critical because decisions regarding vaccine rollout calendars, RSV prophylaxis windows, and surge staffing depend on the joint configuration of seasonal forces rather than on either pathogen alone \cite{PowellRomero2024_Coinfection_Multiresponse,Kramer2024_Influenza_RSV_Interactions}.  
+% Although single–season models capture much of the within–year signal for a given pathogen, they are not designed to resolve multi–periodicity or to quantify how interannual variability reshapes the sequence and spacing of large winter epidemics across successive years.  
 
-This study addresses these gaps by reframing concurrent activity as a \emph{multi–timescale, multi–pathogen risk} problem.  
-Using routinely collected surveillance data from eight Chinese cities spanning northern and southern climatic zones, we decompose each pathogen’s time series into within–year and between–year components using a multiple–seasonal trend framework and quantify the spacing of joint events through survival analysis of inter–outbreak intervals under different severity thresholds.  
-To quantify future risks, we employ forward simulation based on historical patterns, allowing us to assess the probability and timing of concurrent outbreaks under different severity thresholds.
-We estimate the probability and median interval to the next concurrent influenza–RSV outbreak and evaluate their geographic differences across regions.  
-Details of literature identification, inclusion criteria, and data abstraction are provided in the Supplementary Material, while the \emph{Methods} section summarises the analytical design.  
-By integrating multi–period decomposition with an event–time perspective, this work aims to provide a generalisable template for concurrent–outbreak preparedness that balances methodological rigour with direct operational relevance.  
+% Geography further modulates these risks.  
+% YL: I have added a short sentence in the first paragraph just to say with-year patterns vary by region and by pathogen. Do let me know if you have additional points you would like to make here.
+% In China, the Qinling–Huaihe line delineates two broad climatic regimes reflected in respiratory seasonality: northern cities tend to exhibit sharp, winter–concentrated epidemics, whereas southern cities often show extended or multi–modal activity across the cooler months \cite{Zhu2023_SpatialTimingInfluenza_China,Chen2024_IDM_InfluenzaForecasting}.  
+% YL: below, yes, but you don't have any time series post 2020, and you don't have any analysis addressing this, so you are asking for problems...
+% Post–pandemic disruptions have added complexity, with shifts in timing and multiple waves within a single year documented by national surveillance summaries \cite{ChinaCDCWeekly2024}.  
+% YL: I do not entirely understand why spatial and temporal instabilities lead to the consideration of interannual modulations.
+% These spatial contrasts and temporal instabilities highlight the need to consider interannual modulation explicitly when assessing the likelihood of concurrent outbreaks.  
 
+Further, most respiratory disease prediction models are designed to forecast for the numeric disease burden of interest attributable to single pathogens(e.g. $x$ number of RSV hospitalisations are expected in the next $y$ weeks).
+Here, we provide a complementary framework to provide seasonal level forecasts for the probability of a concurrent outbreak and the possible temporal interval until the subsequent concurrent outbreak, covering a different aspect of respiratory public health risks important to the health system.
+Seasonal level forecasts have been widely used in the context of vector-borne infectious diseases, and therefore their value to managing respiratory health worth further exploration.
+To achieve this, we face two key technical challenges.
+First, methods designed for identifying single cyclical components may mischaracterise bewteen-year patterns as residual noises. 
+Second, for most locations, concurrent outbreaks are rare events.
+With finite observational window, it is challenging to distinguish between "will not occur" and "have not yet occurred" events.
 
-% TODO: AI - Write introduction (800-1200 words)
-% Structure:
-% 1. Background on respiratory pathogen seasonality
-% 2. Current understanding of individual vs. concurrent outbreaks
-% 3. Geographic variation in seasonal patterns
-% 4. Gaps in current knowledge
-% 5. Study objectives and approach
+Using long-term surveillance data of seasonal influenza and RSV longer than five years for eight cities in mainland China spanning various climate zones, we developed an analytical framework that combines time-series statistics and survival analysis to quantify the probability of a concurrent outbreak and the interval to the sebsequent concurrent outbreak. 
+Although the estimates we provide focus on seasonal influenza and RSV, our framework is widely adaptable to studying other respiratory pathogens with continuous measured data descirbing their disease burden.
 
+% YL: below, I am not sure I entirely understnad
+% Despite extensive work on single–pathogen seasonality, two methodological limitations constrain preparedness for concurrent outbreaks.  
+% First, most analytical frameworks target only one dominant seasonal period per pathogen (e.g., classical STL decomposition or fixed–period harmonic regression), under–fitting multi–periodic signals and mischaracterising residual dependence relevant to aggregated risk across seasons.  
+% Second, joint–outbreak events are rarely analysed within a formal time–to–event framework that can accommodate right–censoring and irregular spacing.  
+% These gaps are critical because decisions regarding vaccine rollout calendars, RSV prophylaxis windows, and surge staffing depend on the joint configuration of seasonal forces rather than on either pathogen alone \cite{PowellRomero2024_Coinfection_Multiresponse,Kramer2024_Influenza_RSV_Interactions}.  
 
-% TODO: AI - Add more background on individual pathogen seasonality
-% TODO: AI - Discuss the clinical significance of concurrent outbreaks
-% TODO: AI - Introduce the survival analysis approach
+% YL: below, I am not sure I entirely understand
+% This study addresses these gaps by reframing concurrent activity as a \emph{multi–timescale, multi–pathogen risk} problem.  
 
-
-% TODO: AI - Add transition to methodology
-% TODO: AI - State study objectives clearly
-
-
+% Using routinely collected surveillance data from eight Chinese cities spanning northern and southern climatic zones, we decompose each pathogen’s time series into within–year and between–year components using a multiple–seasonal trend framework and quantify the spacing of joint events through survival analysis of inter–outbreak intervals under different severity thresholds.  
+% To quantify future risks, we employ forward simulation based on historical patterns, allowing us to assess the probability and timing of concurrent outbreaks under different severity thresholds.
+% We estimate the probability and median interval to the next concurrent influenza–RSV outbreak and evaluate their geographic differences across regions.  
+%Details of literature identification, inclusion criteria, and data abstraction are provided in the Supplementary Material, while the \emph{Methods} section summarises the analytical design.  
+% By integrating multi–period decomposition with an event–time perspective, this work aims to provide a generalisable template for concurrent–outbreak preparedness that balances methodological rigour with direct operational relevance.  

@@ -33,7 +33,8 @@
 
 % Units and numbers
 \usepackage{siunitx}              % Proper formatting for units
-\sisetup{detect-all}              % Auto-detect font settings
+\sisetup{detect-all,group-separator={,},group-minimum-digits=4} % Auto-detect font settings with grouped thousands
+\newcommand{\numfmt}[1]{\num{#1}} % Centralised number formatting macro
 
 % Date formatting
 \usepackage[ddmmyyyy]{datetime}   % Date format: day-month-year
