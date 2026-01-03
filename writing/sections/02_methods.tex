@@ -91,6 +91,7 @@ These forward simulations were performed for long timeframes to ensure that with
 Within- and between-year patterns were simply repeated in these forward simulations.
 Trend and residual components of the optimal models were fitted to an Auto-Regressive Integrated Moving Average (ARIMA) model. 
 This ARIMA model was then used to generate 1000 stochastic forward trajectories of the trend and residual components per model selected.
+% Yin: do we have to explain why it is 1000-runs?
 Since the ARIMA model was fitted to a seasonally adjusted time series, the mean-reverting properties ensure that long-term forward simulations remain bounded.
 This stochastic simulation framework was developed to characterise the uncertainty around event probabilities, rather than providing forecasts of future disease activities.
 When a given city-pathogen combination has $n$ optimal models, then $1000 \times n$ stochastic forward trajectories were generated. 
