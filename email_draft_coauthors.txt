@@ -1,0 +1,37 @@
+Subject: Draft manuscript for review: Within- and between-year patterns of Seasonal Influenza and RSV
+
+Dear Mark and Ling,
+
+I am writing to share the latest draft of our manuscript, tentatively titled "Within- and between-year patterns of Seasonal Influenza and Respiratory Syncytial Virus and the potential for concurrent outbreaks."
+
+The manuscript and all associated materials are available in our GitHub repository:
+https://github.com/yangclaraliu/respiratory_multi_pathogen_seasonality
+
+**Accessing the manuscript:**
+
+- Main manuscript PDF: `writing/build/main.pdf`
+- Supplemental material PDF: `writing/build/supplemental.pdf`
+- Individual section LaTeX files: `writing/sections/`
+
+**Areas for review:**
+
+I would appreciate your feedback on the following sections:
+
+1. **01_introduction.tex** - Are sufficient context provided and research questions justified?
+2. **02_methods.tex** - Are methods clearly laid out and justified?
+3. **03_results.tex** - Are the results clearly presented and accurately interpreted?
+4. **04_discussion.tex** - Are the discussion points reasonable? Anything obvious that I may have missed?
+5. **07_supplemental.tex** - Supplemental materials
+
+**Additional notes:**
+
+- You do not need to comment on content needing REF at this point, as Kemin and I are still working on that.
+- You should not need to comment on grammar and typos, as I have run the scripts through AI—if anything slipped through, I apologise.
+
+Please review at your convenience and let me know if you have any questions or concerns.
+
+Thank you for your time and contributions to this work.
+
+Best regards,
+Yang
+
