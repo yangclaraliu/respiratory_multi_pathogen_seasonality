@@ -1,0 +1,22 @@
+basemap_figsize: [16, 12]
+sequence_figsize: [9, 6]
+ticklabel_size: 40
+sequence_title_size: 56
+
+highlight_color: "#4DBBD5"
+flu_color: "#1F77B4"
+rsv_color: "#E69F00"
+
+sequence_bottom_margin: 0.12
+sequence_left_margin: 0.15
+sequence_right_margin: 0.88
+sequence_top_margin: 0.85
+
+basemap_left_margin: 0.08
+basemap_bottom_margin: 0.08
+basemap_right_margin: 0.98
+basemap_top_margin: 0.98
+legend_figsize: [6, 2]
+legend_fontsize: 28
+legend_linewidth: 3
+

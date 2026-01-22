@@ -55,6 +55,9 @@ rsconnect/
 .DS_Store
 **/.DS_Store
 
+# External basemap data
+data/external/
+
 # LaTeX build artifacts (but allow PDFs in build/ for sharing)
 writing/build/*
 !writing/build/*.pdf
