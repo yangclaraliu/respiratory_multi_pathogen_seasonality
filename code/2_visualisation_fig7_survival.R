@@ -1,4 +1,5 @@
 library(dplyr)
+library(tidyr)
 library(survival)
 library(broom)
 library(ggplot2)
@@ -129,8 +130,8 @@ p <- ggplot(km, aes(time, 1 - estimate, colour = name, group = interaction(name,
   labs(
     # title = "Cumulative Incidence of Next Joint Outbreak",
     # subtitle = "By t years, Y% simulations have had the next joint outbreak",
-    x = "Gap to next joint outbreak (years)",
-    y = "Cumulative proportion with next outbreak",
+    x = "Interval to the subsequent concurrent outbreak (years)",
+    y = "Proportion of trajectories experiencing the next concurrent outbreak by the indicated time",
     colour = "Risk Threshold",
     fill = "Risk Threshold"  # Add this for the legend
   ) +
