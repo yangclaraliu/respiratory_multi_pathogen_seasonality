@@ -394,7 +394,7 @@ class Figure1Plotter:
             Patch(
                 facecolor=self.config["highlight_color"],
                 edgecolor="black",
-                label="Selected Cities",
+                label="Cities identified",
             ),
             Line2D(
                 [0],
