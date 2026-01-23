@@ -154,40 +154,31 @@ Yunfu & 2.0 (2.0--2.0) & 3.0 (3.0--3.0) & 7.0 (6.0--8.0) \\
 % ===== SUPPLEMENTARY TEXT SECTION =====
 \section*{Supplementary Text 1. Literature search strategy}
 
-We identified city-level surveillance data for respiratory syncytial virus (RSV) and influenza virus (InfV) through structured searches in PubMed. Searches were conducted on 12 August 2024, with no language restrictions. The full search strings and screening criteria are provided below.
+City-level surveillance time series for respiratory syncytial virus (RSV) and influenza virus (InfV) were assembled using a two-stage approach. RSV datasets were first identified from an existing systematic review \cite{guo2024respiratory} and its accompanying extraction table, followed by rule-based filtering and manual verification of time-series structure. Influenza datasets were then identified through targeted PubMed searches restricted to the RSV-anchored study cities. All PubMed searches were conducted on 12 August 2024 without language restrictions. Search strings and screening criteria are provided below.
 
-\subsection*{RSV search}
+\subsection*{RSV dataset identification}
 
-The PubMed search string was:
+Candidate RSV studies were obtained from the extraction table released with the systematic review by Guo et al. \cite{guo2024respiratory} (\texttt{RSVseasonality\_China\_2019\_foruploading.xlsx}; available at \url{https://github.com/Glinnnng/RSVseasonality_China/blob/master/RSVseasonality_China_2019_foruploading.xlsx}; 161 records). Records were first stratified by study setting, yielding 142 mainland China records after excluding Taiwan (10) and Hong Kong (9). Study periods were parsed for all mainland records (142/142) and filtered using pre-specified eligibility criteria: prefecture-/city-level surveillance (administrative level two), at least five consecutive years of observations ($\geq$60 months), monthly or weekly temporal resolution, and laboratory-confirmed RSV indicators (e.g., positivity among ARI/LRTI inpatients or outpatients). Applying these filters retained 20 mainland records with $\geq$5 years of observations and 19 records that were both $\geq$5 years and city-level.
 
+Remaining records were manually reviewed to confirm that reported monthly values represented continuous multi-year time series rather than multi-year averages by calendar month (seasonal climatologies). Six studies reporting multi-year monthly averages were excluded; as a consequence, Hangzhou and Shanghai no longer met the continuous time-series requirement. The final RSV dataset comprised eight cities (Beijing, Lanzhou, Xi'an, Wuhan, Suzhou, Wenzhou, Guangzhou, and Yunfu). For each city, one study was selected and digitized to construct the RSV time series used in the analysis.
+
+To cross-check coverage and to identify any additional eligible city-level RSV series not captured by the review table, we also queried PubMed using the following string:
 \begin{verbatim}
-("Respiratory Syncytial Viruses"[Mesh] OR RSV[Title/Abstract] 
+("Respiratory Syncytial Viruses"[Mesh] OR RSV[Title/Abstract]
  OR "respiratory syncytial"[Title/Abstract])
 AND (China[Mesh] OR China[Title/Abstract] OR Chinese[Title/Abstract])
 \end{verbatim}
 
-Studies were included if they met all of the following criteria:
-\begin{itemize}
-    \item Surveillance data reported at the prefecture- or city-level (administrative level two);
-    \item At least five consecutive years of observations;
-    \item Monthly or weekly temporal resolution;
-    \item Laboratory-confirmed RSV indicators (positivity among ARI/LRTI inpatients or outpatients).
-\end{itemize}
-
-Through this process, eight cities were identified with eligible RSV time series: Beijing, Lanzhou, Xi’an, Wuhan, Suzhou, Wenzhou, Guangzhou, and Yunfu.
-
 \subsection*{Influenza search}
 
-For the same eight cities, we applied a parallel PubMed search using the following query:
-
+For the same eight study cities, influenza datasets were identified through targeted PubMed searches using:
 \begin{verbatim}
 ("Influenza, Human"[Mesh] OR influenza[Title/Abstract])
 AND (China[Mesh] OR China[Title/Abstract] OR Chinese[Title/Abstract])
 AND "last 10 years"[PDat]
 \end{verbatim}
 
-The same inclusion criteria were applied (prefecture-level data, $\geq$5 years of continuous observations, and monthly or weekly reporting). For cities with multiple eligible influenza series, we selected the dataset with the longest uninterrupted coverage and the most specific virological definition. Data sources corresponding to each city–pathogen pair are listed in Supplementary Table~S1.
-
+The same eligibility criteria were applied (prefecture-/city-level surveillance, $\geq$5 years of continuous observations, and monthly or weekly reporting). When multiple eligible influenza series were available for a city, the dataset with the longest uninterrupted coverage and the most specific virological definition was selected. Data sources and surveillance indicator definitions for each city--pathogen pair are provided in Supplementary Table~S1.
 
 
 \begin{landscape}
