@@ -55,6 +55,10 @@ rsconnect/
 .DS_Store
 **/.DS_Store
 
+# Local R/LaTeX artifacts
+Rplots.pdf
+*.spl
+
 # LaTeX build artifacts (but allow PDFs in build/ for sharing)
 writing/build/*
 !writing/build/*.pdf
