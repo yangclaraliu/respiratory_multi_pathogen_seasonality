@@ -1,10 +1,25 @@
-\documentclass[preprint,12pt]{elsarticle}
+\documentclass[12pt]{article}
+
+% Customize title formatting
+\usepackage{titling}
+\setlength{\droptitle}{-2cm}
+\pretitle{\begin{center}\Large\bfseries}
+\posttitle{\end{center}}
+\preauthor{\begin{center}\large}
+\postauthor{\end{center}}
+\predate{}
+\postdate{}
+\date{}
 
 % ===== ESSENTIAL PACKAGES =====
 % Font and encoding
 \usepackage[utf8]{inputenc}       % UTF-8 encoding
 \usepackage[T1]{fontenc}          % Better font encoding
 \usepackage{lmodern}              % Modern, scalable fonts
+\usepackage{marvosym}             % Symbols (e.g., \Letter for envelope)
+
+% Small envelope symbol for corresponding author marker
+\newcommand{\corenv}{\raisebox{0.2ex}{\scriptsize\Letter}}
 
 % Layout
 \usepackage[margin=1in]{geometry} % Page margins
@@ -13,7 +28,6 @@
 
 % Line numbers for review
 \usepackage{lineno}
-\modulolinenumbers[1]
 % Exclude captions from line numbering
 \let\oldcaption\caption
 \renewcommand{\caption}[1]{\nolinenumbers\oldcaption{#1}\linenumbers}
@@ -84,35 +98,36 @@
   \def\discussionwordcount{0}%
 }
 
-% Journal information
-\journal{Epidemics}
-
 % Title and authors
 \begin{document}
 
-\begin{frontmatter}
-
 \title{Within- and between-year patterns of Seasonal Influenza and Respiratory Syncytial Virus and the potential for concurrent outbreaks}
 
-%\author[inst1]{Yang Liu\corref{cor1}}
-%\ead{yang.liu@lshtm.ac.uk}
-%
-%\author[inst2]{Kemin Zhu}
-%\ead{collaborator@email.com}
-%
-%\cortext[cor1]{Corresponding author}
-%\address[inst1]{Department of Infectious Disease Epidemiology, London School of Hygiene \& Tropical Medicine, Keppel Street, London WC1E 7HT, United Kingdom}
-%\address[inst2]{Department of Public Health, University Name, City, Country}
-%
-%\begin{abstract}
-%\input{sections/00_abstract}
-%\end{abstract}
+\author{%
+\begin{center}
+Yang Liu\textsuperscript{*}\textsuperscript{\corenv}\textsuperscript{1}, Kemin Zhu\textsuperscript{*}\textsuperscript{2}, Ling Yin\textsuperscript{2}, Mark Jit\textsuperscript{3}\\[0.5em]
+\small
+\begin{minipage}{0.9\textwidth}
+\centering
+\textsuperscript{1}Department of Infectious Disease Epidemiology, London School of Hygiene \& Tropical Medicine, London WC1E 7HT, United Kingdom\\[0.3em]
+\textsuperscript{2}Shenzhen Institutes of Advanced Technology, Chinese Academy of Sciences, Shenzhen, China\\[0.3em]
+\textsuperscript{3}Department of Population Health, New York University, New York, NY, United States
+\end{minipage}
+\end{center}
+}
 
-\begin{keyword}
-respiratory pathogens \sep influenza \sep RSV \sep seasonal dynamics \sep survival analysis \sep concurrent outbreaks \sep geographic variation
-\end{keyword}
+\maketitle
 
-\end{frontmatter}
+\vspace{-0.5cm}
+\begin{flushleft}
+\small *These authors contributed equally.
+\par\smallskip
+\small \corenv\ Corresponding author, yang.liu@lshtm.ac.uk
+\end{flushleft}
+
+\noindent{\small\textbf{Keywords:} respiratory pathogens, influenza, RSV, seasonal dynamics, survival analysis, concurrent outbreaks, geographic variation\par}
+
+\vspace{0.5cm}
 
 \linenumbers
 
@@ -125,7 +140,7 @@ respiratory pathogens \sep influenza \sep RSV \sep seasonal dynamics \sep surviv
 %\input{sections/06_acknowledgments}
 
 % ===== REFERENCES =====
-\bibliographystyle{elsarticle-harv}
+\bibliographystyle{apalike}
 \bibliography{bib/references}
 
 \end{document}

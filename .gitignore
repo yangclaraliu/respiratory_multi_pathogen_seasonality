@@ -57,6 +57,9 @@ rsconnect/
 
 # External basemap data
 data/external/
+# Local R/LaTeX artifacts
+Rplots.pdf
+*.spl
 
 # LaTeX build artifacts (but allow PDFs in build/ for sharing)
 writing/build/*

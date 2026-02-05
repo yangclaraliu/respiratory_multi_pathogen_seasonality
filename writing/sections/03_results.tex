@@ -1,11 +1,25 @@
 % ===== RESULTS =====
 \section{Results (\resultswordcount~words)}
 
+\subsection{Identified datasets and geographic distribution}
+
+Our search strategy yielded eight paired time series that met the inclusion criteria for both RSV and seasonal influenza surveillance. These datasets cover a diverse geographic range across mainland China, spanning both northern and southern epidemiological regions (Figure \ref{fig:data_overview}). The identified cities include three in Northern China—Beijing, Lanzhou (Gansu), and Xi'an (Shaanxi)—and five in Southern China—Wuhan (Hubei), Suzhou (Jiangsu), Wenzhou (Zhejiang), Guangzhou (Guangdong), and Yunfu (Guangdong).
+
+The assembled time series provide continuous, multi-year observations for both pathogens within each location. The specific surveillance metrics varied by study site, reflecting the heterogeneity of local surveillance systems. The majority of datasets (15 out of 16 pathogen-city combinations) were based on laboratory-confirmed cases, utilizing diagnostic methods such as immunofluorescence assays (IFA/DFA) or PCR (Supplementary Table S1). The single exception was the influenza surveillance data for Xi'an, which was based on syndromic surveillance of daily influenza-like illness (ILI) case counts without virological confirmation. Despite differences in scale and metric definitions, all time series captured the relative temporal dynamics required to characterize the seasonal alignment and interannual variation of the two pathogens.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1.0\textwidth]{../figures/fig 1/Fig1.png}
+\caption{The geographic location of the eight study cities across mainland China and the historical epicurves of their seasonal influenza (green) and RSV (orange) disease burden.}
+\label{fig:data_overview}
+\end{figure}
+
+
 \subsection{Model comparison}
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{../figures/fig2_v3.png}
-\caption{The association between within-year cycle lengths and Akaike Information Criterion (AIC) values by pathogen and city. Each purple point represents a model with only within-year cycles. Each boxplot represents the distribution of AIC values for models with the corresponding within-year cycle length and the full range of between-year cycle lengths tested.}
+\caption{The association between within-year cycle lengths and Akaike Information Criterion (AIC) values by pathogen and city. Each purple point represents a model with only within-year cycles. Each Tukey boxplot represents the distribution of AIC values for models with the corresponding within-year cycle length and the full range of between-year cycle lengths tested.}
 \label{fig:fig2}
 \end{figure}
 
@@ -19,9 +33,9 @@ Thus, for seasonal influenza and RSV, significant between-year cycles may improv
 
 For RSV, the relationship between within-year cycle length and AIC was often U-shaped, with the minimum at ~12 months, indicating a best-fitting annual cycle across many city–pathogen combinations. 
 In contrast, seasonal influenza showed a less consistent pattern: the AIC minimum frequently deviated from 12 months, implying that the optimal seasonal period is not strictly annual. 
-This could reflect time-varying or heterogeneous periodicity (e.g., episodes of slightly shorter or longer cycles that average to $\approx$ 12 months over the long term) or stochastic variation, despite long-term epidemiology appearing annual.
+This could reflect time-varying or heterogeneous periodicity (e.g., episodes of slightly shorter or longer cycles that average to $\approx$ 12 months over the long term) or unaccounted-for variation (e.g., due to factors not included in the model), despite long-term epidemiology appearing annual.
 
-In several panels, the AIC values near the minimum were very densely distributed (i.e. small dispersion), indicating that multiple model specifications produce comparably performing models.
+In several panels, the AIC values near the minimum were very densely distributed (i.e. small dispersion), indicating that several model specifications (from up to 90 MSTL model specifications) produce comparably performing models.
 Accordingly, in forward simulations and concurrent outbreak analysis, we carried forward both the optimal models and their comparable models ($\Delta$AIC $< 7$).
 The number of comparable models for influenza ranged from 2 (in Xi'an, Lanzhou, Wenzhou, and Yunfu) to 20 (in Wuhan and Beijing); that for RSV ranged from 2 (in Wenzhou and Yunfu) to 39 in Beijing.
 The full list detailing the number of comparable models by city and pathogen is available in the Supplementary Material (Table S1).
@@ -29,23 +43,23 @@ The full list detailing the number of comparable models by city and pathogen is 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{../figures/fig3_v4_update_comparable.jpg}
-\caption{Seasonal component analysis and geographic patterns.}
+\caption{Seasonal component analysis and geographic patterns. (A) The optimal within-year cycle lengths estimated from MSTL models; (B) The optimal between-year cycle lengths estimated from MSTL models. As such, the corresponding cells in (A) and (B) belong to the same model specification; (C) The length of time series (converted to days to characterise temporal coverage); (D) The unit of time series (in their original scale); (E) Comparison of between-year cycle lengths among comparable models by geographic region (North vs South) and by pathogen (Influenza vs RSV).}
 \label{fig:fig3}
 \end{figure}
 
 The optimal within-year cycle lengths and between-year cycle lengths for each city and pathogen combination are presented in \hyperref[fig:fig3]{Figure 3} (A) and (B).
-These results reflected only the optimal models—their comparable models are not included.
+These results reflect only the optimal models (the single best-performing model with lowest AIC per city-pathogen combination); their comparable models (those with $\Delta$AIC $< 7$) are not included.
 Similar to the results presented in \hyperref[fig:fig2]{Figure 2}, most within-year cycles were approximately 12 months for RSV and were not strictly annual for seasonal influenza.
 The between-year cycles selected for the optimal models were much more variable.
-These results are not strongly associated with the length of the time series (\hyperref[fig:fig3]{Figure 3}(C)) or their temporal resolution (\hyperref[fig:fig3]{Figure 3}(D)).
+The estimated lengths of within- and between-year cycles are not strongly associated with the length of the time series (\hyperref[fig:fig3]{Figure 3}(C)) or their temporal resolution (\hyperref[fig:fig3]{Figure 3}(D)).
 Looking across all optimal and their comparable models, the between-year cycles for influenza had a mean of 28 months in the North and 27 months in the South; those for RSV had a median of 25 months in the North and 28 months in the South (\hyperref[fig:fig3]{Figure 3}(E)). 
-These differences are not statistically significant by region for either pathogen, likely because of small sample size and thus limited statistical power.
+These differences are not statistically significant by region for either pathogen, which may be explained by small sample size and thus limited statistical power.
 The between-year cycles were highly variable (i.e. IQR > 6 months) for Suzhou (influenza), Wuhan (RSV) and Guangzhou (RSV) (see Supplementary Material Figure S1). 
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{../figures/figure5.png}
-\caption{Proportion of years having concurrent outbreaks of seasonal influenza and RSV under different risk thresholds by city.}
+\caption{Proportion of years with concurrent outbreaks of seasonal influenza and RSV under different risk thresholds by city. Distributions are based on 1000 forward simulation trajectories using both the optimal and comparable models. Risk thresholds are defined by joint exceedance of the 70th, 80th, and 90th percentiles (corresponding to the top 30\%, 20\%, and 10\%) of each city's observed disease burden history for both pathogens. Each ridge plot shows the density of the per-trajectory proportion of projected years with concurrent outbreaks (one proportion per simulation trajectory), calculated over the available projection horizon for each city--pathogen time series.}
 \label{fig:fig4}
 \end{figure}
 
@@ -60,16 +74,17 @@ A complete table of median values of distributions presented in \hyperref[fig:fi
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{../figures/figure6.png}
-\caption{Interval to the subsequent concurrent outbreak of seasonal influenza and RSV under different risk thresholds by city.}
+\caption{Cumulative probability of the next concurrent outbreak of seasonal influenza and RSV as a function of time since the most recent concurrent outbreak, by city. Curves are estimated from 1000 forward simulation trajectories using both optimal and comparable models. Risk thresholds are defined by joint exceedance of the 70th, 80th, and 90th percentiles (corresponding to the top 30\%, 20\%, and 10\%) of each city’s observed disease burden history for both pathogens. Vertical dashed lines indicate the median interval to the next concurrent outbreak for each threshold, and the horizontal dashed line marks the 50\% probability level.}
+
 \label{fig:fig6}
 \end{figure}
 
-Using the observed intervals between consecutive concurrent outbreak years from the forward simulations, we estimated the distribution of temporal gaps to the next potential concurrent outbreak for each city and threshold combination (\hyperref[fig:fig6]{Figure 6}) using Kaplan-Meier survival analysis. 
-Under the strictest risk threshold (joint top 10 percentile), the median temporal gap to the next concurrent outbreak was the shortest in Wenzhou, Xi'an, and Wuhan (two, three, and three years respectively).
+Using the predicted intervals between consecutive concurrent outbreak years from the forward simulations, we estimated the distribution of temporal intervals to the next potential concurrent outbreak for each city and threshold combination (\hyperref[fig:fig6]{Figure 6}) using Kaplan-Meier survival analysis. 
+Under the strictest risk threshold (joint top 10 percentile), the median temporal interval to the next concurrent outbreak was the shortest in Wenzhou, Xi'an, and Wuhan (two, three, and three years respectively).
 In other words, in these cities, at least 50\% of the projection paths experienced another concurrent outbreak within two or three years after the last concurrent outbreak.
-In Suzhou and Yunfu, we expected longer temporal gaps between concurrent outbreaks (six and seven years, respectively).
+In Suzhou and Yunfu, we expected longer temporal intervals between concurrent outbreaks (six and seven years, respectively).
 In Beijing, Lanzhou, and Guangzhou, concurrent outbreaks as defined by the strictest threshold were not likely based on the projection paths.
-Relaxing the joint epidemic threshold to the top 20 percentile (i.e. simultaneously observing influenza and RSV exceeding the 80th percentile of the city's respective observed history), the median temporal gap ranged from one to six years.
+Relaxing the joint epidemic threshold to the top 20 percentile (i.e. simultaneously observing influenza and RSV exceeding the 80th percentile of the city's respective observed history), the median temporal interval ranged from one to six years.
 Beijing and Guangzhou, which previously were not expecting any concurrent outbreaks, were now projected to experience them next in five or six years, respectively.
 Lanzhou was still projected to not experience any concurrent outbreaks given this outbreak risk threshold.
 A full table of the results can be found in the Supplementary Material Table S3.

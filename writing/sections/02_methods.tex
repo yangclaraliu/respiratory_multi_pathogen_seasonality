@@ -6,33 +6,15 @@
 % in here, please mention that all data was log-transformed before modelling, and mention what we did for 0 values
 
 \subsection{Data Sources and Data Preprocessing}
-We searched the published literature for long-term surveillance data for seasonal influenza and RSV in mainland China meeting the following criteria: (a) has at least five years of historical records, (b) at a temporal resolution of a month or less, and (c) at the spatial resolution of city (i.e. administrative level two) or finer.
-We started by identifying data sources for RSV disease burden, since such data are less common for RSV than for influenza, and then looked for influenza studies that covered the same locations.
-%Since it is a requirement for our analysis that influenza and RSV data be simultaneously available for a given city, and that the historical surveillance infrastructure has been more complete for influenza than RSV in the context of mainland China, we started out to identify data sources on RSV disease burden first.
-A recent study by Guo et al. (2024) provided a comprehensive review of the literature on RSV disease burden in mainland China.
-Among the studies they identified, we found 9 datasets to meet our criteria above.
-These datasets were then supplemented with a broader search of the literature through PubMed.
-Search terms we used are included in the Supplementary Material Table S1.
+We assembled paired long-term surveillance data for RSV and seasonal influenza in mainland China based on a unified inclusion strategy.
+We strictly required continuous, year-indexed time series (excluding aggregated seasonal averages) with a minimum duration of five consecutive years, collected at the city level with monthly or weekly resolution.
+RSV datasets were identified by screening the extraction database of a recent systematic review \cite{guo2024respiratory}.
+For the identified cities with eligible RSV data, we assembled matching influenza time series using a hybrid approach: we first screened major influenza systematic reviews\cite{Diamond2022_ChinaSeasonality_BMCMed,Li2021_ChinaBurden_SciRep}, and subsequently conducted targeted PubMed searches for specific cities where review data were unavailable.
+When multiple datasets existed for a city, we prioritized those with longer duration and laboratory confirmation.
+Data presented in figures were digitized using WebPlotDigitizer.
+For analysis, raw surveillance metrics were natural log-transformed to stabilize variance, with zeros replaced by a small constant.
+Detailed search strategies, data sources, and surveillance definitions are provided in the Supplementary Material.
 
-This process identified eight cities with RSV data meeting the above criteria: Beijing, Lanzhou (Gansu province), Xi'an (Shaanxi province), Wuhan (Hubei province), Suzhou (Jiangsu province), Wenzhou (Zhejiang province), Guangzhou (Guangdong province), and Yunfu (Guangdong province).
-
-Of these cities, Beijing, Lanzhou, and Xi'an are located in the northern part of mainland China, and the rest are located in the southern part \cite{Hu_1935_HuHuanyongLine}.
-% TODO: it is not clear to me what "the search terms" were to begin with.  Are these the search terms used in Guo et al. (2024)? 
-We then searched for influenza burden data for these same eight cities using the same set of search terms in PubMed, replacing the search term "RSV" with "Influenza", and the search term "China" with the specific city names.
-Data embedded in figures were digitised using WebPlotDigitizer-4.7.
-
-The specific metric describing influenza and RSV burden varied by city and by pathogen (Figure \ref{fig:data_selection}).
-There was a mix of in- and out-patient settings, and of laboratory-confirmed and syndromic surveillance.
-Of all city and pathogen combinations, seasonal influenza in Xi'an is the only combination where diagnostics were based on symptoms only.
-All other disease burden metrics were confirmed by laboratory diagnostics.
-
-Despite these differences, their relative changes over time provided the key information needed to describe their within- and between-year patterns.
-More details of the disease burden metrics extracted from published literature are presented in the Supplementary Methods Section 1.
-
-We transformed raw values for disease burden metrics by taking their natural logarithm before further analysis to stabilise variance and ensure that all predicted burden remain positive.
-Zeros were replaced with a small constant.
-All analyses were conducted on the datasets' original time scale (e.g. with weekly data, we tested if within-year cycle length was approximately 52 weeks).
-Results were converted to a monthly scale only for comparison and interpretation purposes.
 
 % A wide range of surveillance indicators may exist for influenza and RSV disease burden
 % More details of the time series selection process can be found in the Supplementary Material Table S1.
@@ -56,14 +38,6 @@ Results were converted to a monthly scale only for comparison and interpretation
 % To allow comparison of seasonal periodicities across datasets, estimated cycle lengths were converted into a common monthly unit.
 % Daily estimates were divided by 30, weekly estimates by 4, and monthly estimates retained.
 % The resulting standardised metrics (\texttt{step\_size\_standardised}, \texttt{step\_size1\_standardised}, \texttt{step\_size2\_standardised}) were used for subsequent model evaluation and analyses of concurrent outbreak intervals.
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.8\textwidth]{../figures/fig 1/Fig1.png}
-  \caption{The geographic location of the eight study cities across mainland China and the historical epicurves of their seasonal influenza (green) and RSV (orange) disease burden.}
-  \label{fig:data_selection}
-\end{figure}
-
 
 \subsection{Identifying within- and between-year cycles}
 % To enable comparison across cities and pathogens, all time series were normalised into dimensionless intensity indices after log-transformation.
