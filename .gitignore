@@ -55,6 +55,8 @@ rsconnect/
 .DS_Store
 **/.DS_Store
 
+# External basemap data
+data/external/
 # Local R/LaTeX artifacts
 Rplots.pdf
 *.spl
